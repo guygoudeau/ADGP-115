@@ -1,1 +1,5 @@
-sceneSetups: []
+sceneSetups:
+- path: C:/Users/rory.vaughn/Documents/ADGP115-Test/Assets/Rory stuff/Rory's Test
+    Scene.unity
+  isLoaded: 1
+  isActive: 1
