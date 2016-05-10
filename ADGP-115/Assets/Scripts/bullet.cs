@@ -38,11 +38,16 @@ public class bullet : MonoBehaviour {
 
     void OnTriggerEnter (Collider enemy)
     {
-        if (enemy.gameObject.name == "p2" && Bullet.name == "SniperB(Clone)")
-            enemy.gameObject.GetComponent<MoveCar>().Health -= 50;
-        else if (enemy.gameObject.name == "p2" && Bullet.name == "ShotgunB(Clone)")
-            enemy.gameObject.GetComponent<MoveCar>().Health -= 10;
-        else if (enemy.gameObject.name == "p2" && Bullet.name == "MachineGunB(Clone)")
-            enemy.gameObject.GetComponent<MoveCar>().Health--;
+        if (enemy.gameObject != Owner)
+        {
+            Owner = enemy.gameObject;
+            if (Bullet.name == "SniperB(Clone)")
+                Owner.GetComponent<MoveCar>().Health -= 50;
+            else if (Bullet.name == "ShotgunB(Clone)")
+                Owner.GetComponent<MoveCar>().Health -= 10;
+            else if (Bullet.name == "MachineGunB(Clone)")
+                Owner.GetComponent<MoveCar>().Health--;
+            Destroy(this.gameObject);
+        }
     }
 }

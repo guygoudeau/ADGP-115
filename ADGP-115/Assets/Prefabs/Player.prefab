@@ -172,7 +172,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CarSpeed: 50
-  bullet: {fileID: 0}
+  Health: 10
+  Sniper: {fileID: 102806, guid: 00c4167e5b46b604d9f4c6204d122341, type: 2}
+  Shotgun: {fileID: 102806, guid: 52e075f2f8ad6a94fadd712a0f9b6336, type: 2}
+  MachineGun: {fileID: 102806, guid: be3c311efce20024884d71517b32e8a9, type: 2}
+  barrel: 1
+  currentBullet: {fileID: 0}
 --- !u!124 &12497646
 Behaviour:
   m_ObjectHideFlags: 1
