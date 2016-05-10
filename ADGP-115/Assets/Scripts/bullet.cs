@@ -3,7 +3,7 @@ using System.Collections;
 
 public class bullet : MonoBehaviour {
 
-    float bulletSpeed = 70.0f;
+    float bulletSpeed = 700.0f;
     float lifespan = .8f;
     public GameObject Bullet;
     Vector3 position;
@@ -14,7 +14,7 @@ public class bullet : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.position = new Vector3 (transform.position.x + (Time.deltaTime * bulletSpeed), position.y, position.z);
+        transform.Translate(Vector3.forward * (bulletSpeed * Time.deltaTime));
         lifespan -= Time.deltaTime;
         if (lifespan <= 0)
             Destroy(Bullet);

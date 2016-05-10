@@ -44,7 +44,7 @@ public class MoveCar : MonoBehaviour
             shooting = false;
         if (shooting)
         {
-            Instantiate(bullet, new Vector3(position.x + 10 ,position.y, position.z), Quaternion.identity);
+            Instantiate(bullet, new Vector3(position.x ,position.y, position.z + 10), Quaternion.identity);
         }
 	}
 }
