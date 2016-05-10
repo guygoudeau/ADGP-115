@@ -29,6 +29,6 @@ public class bullet : MonoBehaviour {
     void OnTriggerEnter (Collider enemy)
     {
         if (enemy.gameObject.name == "p2")
-            enemy.gameObject.GetComponent<MoveCar>.health--;
+            enemy.gameObject.GetComponent<MoveCar>().Health--;
     }
 }

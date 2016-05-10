@@ -308,6 +308,22 @@ Prefab:
       propertyPath: m_LocalRotation.z
       value: -0.111651875
       objectReference: {fileID: 0}
+    - target: {fileID: 11437700, guid: c3cf7a35cac03d04794e984e5b66dd63, type: 2}
+      propertyPath: Sniper
+      value: 
+      objectReference: {fileID: 102806, guid: 00c4167e5b46b604d9f4c6204d122341, type: 2}
+    - target: {fileID: 11437700, guid: c3cf7a35cac03d04794e984e5b66dd63, type: 2}
+      propertyPath: Shotgun
+      value: 
+      objectReference: {fileID: 102806, guid: 52e075f2f8ad6a94fadd712a0f9b6336, type: 2}
+    - target: {fileID: 11437700, guid: c3cf7a35cac03d04794e984e5b66dd63, type: 2}
+      propertyPath: MachineGun
+      value: 
+      objectReference: {fileID: 102806, guid: be3c311efce20024884d71517b32e8a9, type: 2}
+    - target: {fileID: 11437700, guid: c3cf7a35cac03d04794e984e5b66dd63, type: 2}
+      propertyPath: barrel
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c3cf7a35cac03d04794e984e5b66dd63, type: 2}
   m_IsPrefabParent: 0
