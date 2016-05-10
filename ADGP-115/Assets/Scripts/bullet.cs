@@ -10,11 +10,20 @@ public class bullet : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         if (Bullet.name == "SniperB(Clone)")
+        {
+            lifespan = 4;
             bulletSpeed = 800;
+        }
         if (Bullet.name == "ShotgunB(Clone)")
+        {
+            lifespan = .7f;
             bulletSpeed = 100;
+        }
         if (Bullet.name == "MachineGunB(Clone)")
+        {
+            lifespan = 1;
             bulletSpeed = 100;
+        }
         position = transform.position;
 	}
 	
@@ -28,7 +37,11 @@ public class bullet : MonoBehaviour {
 
     void OnTriggerEnter (Collider enemy)
     {
-        if (enemy.gameObject.name == "p2")
+        if (enemy.gameObject.name == "p2" && Bullet.name == "SniperB(Clone)")
+            enemy.gameObject.GetComponent<MoveCar>().Health -= 50;
+        else if (enemy.gameObject.name == "p2" && Bullet.name == "ShotgunB(Clone)")
+            enemy.gameObject.GetComponent<MoveCar>().Health -= 10;
+        else if (enemy.gameObject.name == "p2" && Bullet.name == "MachineGunB(Clone)")
             enemy.gameObject.GetComponent<MoveCar>().Health--;
     }
 }

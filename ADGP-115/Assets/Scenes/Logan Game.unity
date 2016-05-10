@@ -178,7 +178,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 410095a6dd610b64f8742c44aea4a32a, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -322,7 +322,11 @@ Prefab:
       objectReference: {fileID: 102806, guid: be3c311efce20024884d71517b32e8a9, type: 2}
     - target: {fileID: 11437700, guid: c3cf7a35cac03d04794e984e5b66dd63, type: 2}
       propertyPath: barrel
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11437700, guid: c3cf7a35cac03d04794e984e5b66dd63, type: 2}
+      propertyPath: currentBullet
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c3cf7a35cac03d04794e984e5b66dd63, type: 2}
