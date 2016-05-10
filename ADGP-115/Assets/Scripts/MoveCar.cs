@@ -11,7 +11,6 @@ public class MoveCar : MonoBehaviour
     string movementAxisVertical;
     string fire;
     public GameObject bullet;
-    bool shooting = false;
 
     // Use this for initialization
     void Start () {
@@ -39,12 +38,9 @@ public class MoveCar : MonoBehaviour
         position.z += Input.GetAxis(movementAxisVertical) * CarSpeed * Time.deltaTime;
         transform.position = new Vector3(position.x, transform.position.y, position.z);
         if (Input.GetButtonDown(fire))
-            shooting = true;
-        if (Input.GetButtonUp(fire))
-            shooting = false;
-        if (shooting)
         {
             Instantiate(bullet, new Vector3(position.x,position.y, position.z), Quaternion.identity);
+
         }
 	}
 }
