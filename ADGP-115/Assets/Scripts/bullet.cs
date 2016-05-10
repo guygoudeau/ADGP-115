@@ -6,6 +6,7 @@ public class bullet : MonoBehaviour {
     float bulletSpeed = 50f;
     float lifespan = .8f;
     public GameObject Bullet;
+    public GameObject Owner;
     Vector3 position;
 	// Use this for initialization
 	void Start () {

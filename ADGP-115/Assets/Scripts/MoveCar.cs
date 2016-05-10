@@ -53,7 +53,8 @@ public class MoveCar : MonoBehaviour
             shooting = false;
         if (shooting)
         {
-            Instantiate(currentBullet, new Vector3(position.x ,position.y, position.z + 10), Quaternion.identity);
+            GameObject blah = (GameObject)Instantiate(currentBullet, new Vector3(position.x ,position.y, position.z + 10), Quaternion.identity);
+            blah.GetComponent<bullet>().Owner = this.gameObject;
         }
 	}
 }
