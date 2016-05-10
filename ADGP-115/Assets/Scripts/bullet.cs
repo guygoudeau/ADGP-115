@@ -3,12 +3,18 @@ using System.Collections;
 
 public class bullet : MonoBehaviour {
 
-    float bulletSpeed = 700.0f;
+    float bulletSpeed = 50f;
     float lifespan = .8f;
     public GameObject Bullet;
     Vector3 position;
 	// Use this for initialization
 	void Start () {
+        if (Bullet.name == "SniperB(Clone)")
+            bulletSpeed = 800;
+        if (Bullet.name == "ShotgunB(Clone)")
+            bulletSpeed = 100;
+        if (Bullet.name == "MachineGunB(Clone)")
+            bulletSpeed = 100;
         position = transform.position;
 	}
 	
@@ -19,4 +25,10 @@ public class bullet : MonoBehaviour {
         if (lifespan <= 0)
             Destroy(Bullet);
 	}
+
+    void OnTriggerEnter (Collider enemy)
+    {
+        if (enemy.gameObject.name == "p2")
+            enemy.gameObject.GetComponent<MoveCar>.health--;
+    }
 }
