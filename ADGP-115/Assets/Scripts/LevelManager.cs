@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour {
 
     public Transform mainMenu, optionsMenu, controlsScreen, creditsScreen, contactUsScreen;
+    public GameObject audioSource;
+    bool soundToggle = true;
 
 	public void LoadScene (string name)
     {
@@ -14,6 +16,19 @@ public class LevelManager : MonoBehaviour {
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void Mute()
+    {
+        soundToggle = !soundToggle;
+        if(soundToggle)
+        {
+            audioSource.SetActive(true);
+        }
+        else
+        {
+            audioSource.SetActive(false);
+        }
     }
 
     public void OptionsMenu(bool clicked)

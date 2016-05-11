@@ -14,9 +14,10 @@ public class ChainsawScript : MonoBehaviour {
 
     void OnTriggerStay(Collider enemy)
     {
-        if (enemy.gameObject != Owner)
+        if (Owner.GetComponent<MoveCar>().barrel == 3)
         {
-            enemy.GetComponent<MoveCar>().Health -= 1;
+            if (enemy.gameObject != Owner)
+                enemy.GetComponent<MoveCar>().Health -= 1;
         }
     }
 }
