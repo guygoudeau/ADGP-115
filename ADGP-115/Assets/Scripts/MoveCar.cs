@@ -57,10 +57,8 @@ public class MoveCar : MonoBehaviour
             currentBullet = MachineGun;
         }
         else if (barrel == 3)
-        {
             this.gameObject.transform.GetChild(1).transform.localScale = new Vector3(.01f, .4f, .2f);
-            this.gameObject.GetComponentInChildren<ChainsawScript>().Owner = this.gameObject;
-        }
+        this.gameObject.GetComponentInChildren<ChainsawScript>().Owner = this.gameObject;
     }
 	
 	// Update is called once per frame
