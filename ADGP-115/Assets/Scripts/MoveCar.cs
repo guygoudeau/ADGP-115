@@ -15,6 +15,8 @@ public class MoveCar : MonoBehaviour
     public GameObject MachineGun;
     bool shooting = false;
     public int barrel = 0;
+    float delaySpan = 1;
+    float Delay = 1;
     public GameObject currentBullet;
     // Use this for initialization
     void Start () {
@@ -33,11 +35,23 @@ public class MoveCar : MonoBehaviour
         }
 
         if (barrel == 0)
+        {
+            delaySpan = 5;
+            Delay = 0;
             currentBullet = Sniper;
+        }
         if (barrel == 1)
+        {
+            delaySpan = 3;
+            Delay = 0;
             currentBullet = Shotgun;
+        }
         if (barrel == 2)
+        {
+            delaySpan = .1f;
+            Delay = 0;
             currentBullet = MachineGun;
+        }
     }
 	
 	// Update is called once per frame
@@ -51,10 +65,22 @@ public class MoveCar : MonoBehaviour
             shooting = true;
         if (Input.GetButtonUp(fire))
             shooting = false;
-        if (shooting)
+        if (shooting && (Delay <= 0))
         {
-            GameObject blah = (GameObject)Instantiate(currentBullet, new Vector3(position.x ,position.y, position.z + 10), Quaternion.identity);
-            blah.GetComponent<bullet>().Owner = this.gameObject;
+            GameObject Bullet = (GameObject)Instantiate(currentBullet, new Vector3(position.x, position.y, position.z + 10), Quaternion.identity);
+            Bullet.GetComponent<bullet>().Owner = this.gameObject;
+            if (barrel == 1)
+            {
+                for(int i = 1; i < 3; i++)
+                {
+                    GameObject exPosBullet = (GameObject)Instantiate(currentBullet, new Vector3(position.x + (5 * i), position.y, position.z + 10), Quaternion.identity);
+                    exPosBullet.GetComponent<bullet>().Owner = this.gameObject;
+                    GameObject exNegBullet = (GameObject)Instantiate(currentBullet, new Vector3(position.x - (5 * i), position.y, position.z + 10), Quaternion.identity);
+                    exNegBullet.GetComponent<bullet>().Owner = this.gameObject;
+                }
+            }
+            Delay = delaySpan;
         }
+        Delay -= Time.deltaTime;
 	}
 }

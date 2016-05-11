@@ -126,9 +126,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 128636, guid: c3cf7a35cac03d04794e984e5b66dd63, type: 2}
       propertyPath: m_Name
-      value: Player (1)
+      value: Player 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 128636, guid: c3cf7a35cac03d04794e984e5b66dd63, type: 2}
+      propertyPath: m_TagString
+      value: P2
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8150586, guid: c3cf7a35cac03d04794e984e5b66dd63, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: c3cf7a35cac03d04794e984e5b66dd63, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &541485319 stripped
@@ -208,7 +213,7 @@ GameObject:
   - 64: {fileID: 1045921233}
   - 23: {fileID: 1045921232}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -374,6 +379,10 @@ Prefab:
       propertyPath: currentBullet
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 128636, guid: c3cf7a35cac03d04794e984e5b66dd63, type: 2}
+      propertyPath: m_Name
+      value: Player 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c3cf7a35cac03d04794e984e5b66dd63, type: 2}
   m_IsPrefabParent: 0
@@ -388,7 +397,6 @@ GameObject:
   - 20: {fileID: 1540933885}
   - 92: {fileID: 1540933884}
   - 124: {fileID: 1540933883}
-  - 81: {fileID: 1540933882}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -396,13 +404,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!81 &1540933882
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1540933881}
-  m_Enabled: 1
 --- !u!124 &1540933883
 Behaviour:
   m_ObjectHideFlags: 0
