@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: e336023fa3959ed4592b607f8451f836
+timeCreated: 1462983846
+=======
 guid: 0da57fd49417d82469ea67b99d09434b
 timeCreated: 1462984750
+>>>>>>> Logan/master
 licenseType: Pro
 AudioImporter:
   serializedVersion: 6
