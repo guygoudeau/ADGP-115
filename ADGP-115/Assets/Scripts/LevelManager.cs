@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour {
 
-    public Transform mainMenu, optionsMenu;
+    public Transform mainMenu, optionsMenu, controlsScreen, creditsScreen, contactUsScreen;
 
 	public void LoadScene (string name)
     {
@@ -20,13 +20,79 @@ public class LevelManager : MonoBehaviour {
     {
         if (clicked == true)
         {
-            optionsMenu.gameObject.SetActive(true);
             mainMenu.gameObject.SetActive(false);
+            optionsMenu.gameObject.SetActive(true);
+            controlsScreen.gameObject.SetActive(false);
+            creditsScreen.gameObject.SetActive(false);
+            contactUsScreen.gameObject.SetActive(false);
         }
         else
         {
-            optionsMenu.gameObject.SetActive(false);
             mainMenu.gameObject.SetActive(true);
+            optionsMenu.gameObject.SetActive(false);
+            controlsScreen.gameObject.SetActive(false);
+            creditsScreen.gameObject.SetActive(false);
+            contactUsScreen.gameObject.SetActive(false);
+        }
+    }
+
+    public void ControlsScreen(bool clicked)
+    {
+        if (clicked == true)
+        {
+            mainMenu.gameObject.SetActive(false);
+            optionsMenu.gameObject.SetActive(false);
+            controlsScreen.gameObject.SetActive(true);
+            creditsScreen.gameObject.SetActive(false);
+            contactUsScreen.gameObject.SetActive(false);
+        }
+        else
+        {
+            mainMenu.gameObject.SetActive(false);
+            optionsMenu.gameObject.SetActive(true);
+            controlsScreen.gameObject.SetActive(false);
+            creditsScreen.gameObject.SetActive(false);
+            contactUsScreen.gameObject.SetActive(false);
+        }
+    }
+
+    public void CreditsScreen(bool clicked)
+    {
+        if (clicked == true)
+        {
+            mainMenu.gameObject.SetActive(false);
+            optionsMenu.gameObject.SetActive(false);
+            controlsScreen.gameObject.SetActive(false);
+            creditsScreen.gameObject.SetActive(true);
+            contactUsScreen.gameObject.SetActive(false);
+        }
+        else
+        {
+            mainMenu.gameObject.SetActive(false);
+            optionsMenu.gameObject.SetActive(true);
+            controlsScreen.gameObject.SetActive(false);
+            creditsScreen.gameObject.SetActive(false);
+            contactUsScreen.gameObject.SetActive(false);
+        }
+    }
+
+    public void ContactUsScreen(bool clicked)
+    {
+        if (clicked == true)
+        {
+            mainMenu.gameObject.SetActive(false);
+            optionsMenu.gameObject.SetActive(false);
+            controlsScreen.gameObject.SetActive(false);
+            creditsScreen.gameObject.SetActive(false);
+            contactUsScreen.gameObject.SetActive(true);
+        }
+        else
+        {
+            mainMenu.gameObject.SetActive(false);
+            optionsMenu.gameObject.SetActive(true);
+            controlsScreen.gameObject.SetActive(false);
+            creditsScreen.gameObject.SetActive(false);
+            contactUsScreen.gameObject.SetActive(false);
         }
     }
 }
