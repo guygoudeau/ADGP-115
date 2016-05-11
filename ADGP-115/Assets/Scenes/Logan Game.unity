@@ -132,6 +132,10 @@ Prefab:
       propertyPath: m_TagString
       value: P2
       objectReference: {fileID: 0}
+    - target: {fileID: 2313508, guid: c3cf7a35cac03d04794e984e5b66dd63, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 410095a6dd610b64f8742c44aea4a32a, type: 2}
     m_RemovedComponents:
     - {fileID: 8150586, guid: c3cf7a35cac03d04794e984e5b66dd63, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: c3cf7a35cac03d04794e984e5b66dd63, type: 2}
