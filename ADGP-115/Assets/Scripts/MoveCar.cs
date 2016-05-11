@@ -18,6 +18,7 @@ public class MoveCar : MonoBehaviour
     float delaySpan = 1;
     float Delay = 1;
     public GameObject currentBullet;
+    bool alive = true;
     // Use this for initialization
     void Start () {
         position = transform.position;
@@ -36,51 +37,67 @@ public class MoveCar : MonoBehaviour
 
         if (barrel == 0)
         {
+            this.gameObject.transform.GetChild(1).transform.localScale = new Vector3(.1f, .4f, .1f);
             delaySpan = 5;
             Delay = 0;
             currentBullet = Sniper;
         }
-        if (barrel == 1)
+        else if (barrel == 1)
         {
+            this.gameObject.transform.GetChild(1).transform.localScale = new Vector3(.2f, .3f, .3f);
             delaySpan = 3;
             Delay = 0;
             currentBullet = Shotgun;
         }
-        if (barrel == 2)
+        else if (barrel == 2)
         {
+            this.gameObject.transform.GetChild(1).transform.localScale = new Vector3(.2f, .2f, .2f);
             delaySpan = .1f;
             Delay = 0;
             currentBullet = MachineGun;
+        }
+        else if (barrel == 3)
+        {
+            this.gameObject.transform.GetChild(1).transform.localScale = new Vector3(.01f, .4f, .2f);
+            this.gameObject.GetComponentInChildren<ChainsawScript>().Owner = this.gameObject;
         }
     }
 	
 	// Update is called once per frame
 	void Update () {
-
-    
-        position.x += Input.GetAxis (movementAxisHorizontal) * CarSpeed * Time.deltaTime;
-        position.z += Input.GetAxis(movementAxisVertical) * CarSpeed * Time.deltaTime;
-        transform.position = new Vector3(position.x, transform.position.y, position.z);
-        if (Input.GetButtonDown(fire))
-            shooting = true;
-        if (Input.GetButtonUp(fire))
-            shooting = false;
-        if (shooting && (Delay <= 0))
+        if (alive)
         {
-            GameObject Bullet = (GameObject)Instantiate(currentBullet, new Vector3(position.x, position.y, position.z + 10), Quaternion.identity);
-            Bullet.GetComponent<bullet>().Owner = this.gameObject;
-            if (barrel == 1)
+            position.x += Input.GetAxis(movementAxisHorizontal) * CarSpeed * Time.deltaTime;
+            position.z += Input.GetAxis(movementAxisVertical) * CarSpeed * Time.deltaTime;
+            transform.position = new Vector3(position.x, transform.position.y, position.z);
+            if (Input.GetButtonDown(fire))
+                shooting = true;
+            if (Input.GetButtonUp(fire))
+                shooting = false;
+            if ((shooting && (Delay <= 0)) && (barrel != 3))
             {
-                for(int i = 1; i < 3; i++)
+                GameObject Bullet = (GameObject)Instantiate(currentBullet, new Vector3(position.x, position.y, position.z + 10), Quaternion.identity);
+                Bullet.GetComponent<bullet>().Owner = this.gameObject;
+                if (barrel == 1)
                 {
-                    GameObject exPosBullet = (GameObject)Instantiate(currentBullet, new Vector3(position.x + (5 * i), position.y, position.z + 10), Quaternion.identity);
-                    exPosBullet.GetComponent<bullet>().Owner = this.gameObject;
-                    GameObject exNegBullet = (GameObject)Instantiate(currentBullet, new Vector3(position.x - (5 * i), position.y, position.z + 10), Quaternion.identity);
-                    exNegBullet.GetComponent<bullet>().Owner = this.gameObject;
+                    for (int i = 1; i < 3; i++)
+                    {
+                        GameObject exPosBullet = (GameObject)Instantiate(currentBullet, new Vector3(position.x + (5 * i), position.y, position.z + 10), Quaternion.identity);
+                        exPosBullet.GetComponent<bullet>().Owner = this.gameObject;
+                        GameObject exNegBullet = (GameObject)Instantiate(currentBullet, new Vector3(position.x - (5 * i), position.y, position.z + 10), Quaternion.identity);
+                        exNegBullet.GetComponent<bullet>().Owner = this.gameObject;
+                    }
                 }
+                Delay = delaySpan;
             }
-            Delay = delaySpan;
         }
+        TankDeath();
         Delay -= Time.deltaTime;
 	}
+
+    void TankDeath()
+    {
+        if (Health <= 0)
+            alive = false;
+    }
 }
