@@ -17,12 +17,12 @@ public class bullet : MonoBehaviour {
         }
         if (Bullet.name == "ShotgunB(Clone)")
         {
-            lifespan = .7f;
+            lifespan = 1f;
             bulletSpeed = 100;
         }
         if (Bullet.name == "MachineGunB(Clone)")
         {
-            lifespan = 1;
+            lifespan = 2.5f;
             bulletSpeed = 100;
         }
         position = transform.position;
