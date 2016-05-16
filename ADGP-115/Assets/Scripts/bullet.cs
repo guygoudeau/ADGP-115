@@ -46,7 +46,7 @@ public class bullet : MonoBehaviour {
             else if (Bullet.name == "ShotgunB(Clone)")
                 Owner.GetComponent<MoveCar>().Health -= 10;
             else if (Bullet.name == "MachineGunB(Clone)")
-                Owner.GetComponent<MoveCar>().Health--;
+                Owner.GetComponent<MoveCar>().Health -= 1;
             Destroy(this.gameObject);
         }
     }
