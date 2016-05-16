@@ -243,10 +243,6 @@ Prefab:
       propertyPath: m_TagString
       value: P1
       objectReference: {fileID: 0}
-    - target: {fileID: 11426598, guid: 3a1438b3e0690574a8274a5daf968a4e, type: 2}
-      propertyPath: barrel
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3a1438b3e0690574a8274a5daf968a4e, type: 2}
   m_IsPrefabParent: 0
