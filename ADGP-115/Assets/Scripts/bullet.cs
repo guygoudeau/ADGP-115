@@ -13,7 +13,7 @@ public class bullet : MonoBehaviour {
         if (Bullet.name == "SniperB(Clone)")
         {
             lifespan = 4;
-            bulletSpeed = 100;
+            bulletSpeed = 800;
         }
         if (Bullet.name == "ShotgunB(Clone)")
         {
