@@ -11,6 +11,7 @@ public class Pause : MonoBehaviour {
     public void LoadScene(string name)
     {
         SceneManager.LoadScene(name);
+        Time.timeScale = 1;
     }
 
     public void Mute()
