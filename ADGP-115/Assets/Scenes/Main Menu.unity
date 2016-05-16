@@ -41,7 +41,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 6
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_LightmapsMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -66,7 +66,8 @@ LightmapSettings:
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
     m_ReflectionCompression: 2
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000001, guid: a8a020d0cc2747e47851ae6ac8fece54,
+    type: 2}
   m_RuntimeCPUUsage: 25
 --- !u!196 &4
 NavMeshSettings:
@@ -286,7 +287,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Game
+          m_StringArgument: Logan Game
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -2604,7 +2605,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 5f19636b7dd63cb469c7e53b8b54beeb, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 4cf301e8cd3b83c458117d5779f70f63, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.649
   m_Pitch: 1
@@ -2833,8 +2834,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 15, y: -16}
-  m_SizeDelta: {x: 419, y: 161}
+  m_AnchoredPosition: {x: 15, y: -18.5}
+  m_SizeDelta: {x: 419, y: 165.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1515026152
 MonoBehaviour:
@@ -2859,7 +2860,7 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 14
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 4
@@ -2877,10 +2878,10 @@ MonoBehaviour:
     Creative Director: Rory Vaughn
 
 
-    Menu theme: http://click.dj/yaboyjdub/nintendo-mii-channel-trap
+    Menu music by Jdub: http://click.dj/yaboyjdub/nintendo-mii-channel-trap
 
 
-    BGM: http://www.purple-planet.com
+    Background music by Bulby: https://www.youtube.com/watch?v=kucS8dNTHuM
 
 
 '
