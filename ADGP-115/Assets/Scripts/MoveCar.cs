@@ -6,7 +6,7 @@ public class MoveCar : MonoBehaviour
     public float CarSpeed = 50.0f;
     Vector3 position;
 
-    public int Health = 10;
+    public float Health = 10;
     string movementAxisHorizontal;
     string movementAxisVertical;
     string fire;
@@ -44,7 +44,7 @@ public class MoveCar : MonoBehaviour
         }
         else if (barrel == 1)
         {
-            this.gameObject.transform.GetChild(1).transform.localScale = new Vector3(.2f, .3f, .3f);
+            this.gameObject.transform.GetChild(1).transform.localScale = new Vector3(.3f, .3f, .2f);
             delaySpan = 3;
             Delay = 0;
             currentBullet = Shotgun;
@@ -57,7 +57,7 @@ public class MoveCar : MonoBehaviour
             currentBullet = MachineGun;
         }
         else if (barrel == 3)
-            this.gameObject.transform.GetChild(1).transform.localScale = new Vector3(.01f, .4f, .2f);
+            this.gameObject.transform.GetChild(1).transform.localScale = new Vector3(.2f, .4f, .01f);
         this.gameObject.GetComponentInChildren<ChainsawScript>().Owner = this.gameObject;
     }
 	
