@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class MoveCar : MonoBehaviour
 {
     public float CarSpeed = 50.0f;
     Vector3 position;
 
-    public float Health = 10;
+    public float Health = 100;
     string movementAxisHorizontal;
     string movementAxisVertical;
     string fire;
@@ -21,6 +22,9 @@ public class MoveCar : MonoBehaviour
     public bool BoostCurrent = false;
     public GameObject currentBullet;
     bool alive = true;
+
+    public Slider healthSlider;
+
     // Use this for initialization
     void Start () {
         position = transform.position;
@@ -91,21 +95,22 @@ public class MoveCar : MonoBehaviour
                 shooting = false;
             if ((shooting && (Delay <= 0)) && (barrel != 3))
             {
-                GameObject Bullet = (GameObject)Instantiate(currentBullet, new Vector3(position.x, position.y, position.z + 10), Quaternion.identity);
+                GameObject Bullet = (GameObject)Instantiate(currentBullet, new Vector3(transform.position.x, transform.position.y, transform.position.z + 10), Quaternion.identity);
                 Bullet.GetComponent<bullet>().Owner = this.gameObject;
                 if (barrel == 1)
                 {
                     for (int i = 1; i < 3; i++)
                     {
-                        GameObject exPosBullet = (GameObject)Instantiate(currentBullet, new Vector3(position.x + (5 * i), position.y, position.z + 10), Quaternion.identity);
+                        GameObject exPosBullet = (GameObject)Instantiate(currentBullet, new Vector3(transform.position.x + (5 * i), transform.position.y, transform.position.z + 10), Quaternion.identity);
                         exPosBullet.GetComponent<bullet>().Owner = this.gameObject;
-                        GameObject exNegBullet = (GameObject)Instantiate(currentBullet, new Vector3(position.x - (5 * i), position.y, position.z + 10), Quaternion.identity);
+                        GameObject exNegBullet = (GameObject)Instantiate(currentBullet, new Vector3(transform.position.x - (5 * i), transform.position.y, transform.position.z + 10), Quaternion.identity);
                         exNegBullet.GetComponent<bullet>().Owner = this.gameObject;
                     }
                 }
                 Delay = delaySpan;
             }
         }
+        healthSlider.value = Health;
         TankDeath();
         Delay -= Time.deltaTime;
 	}

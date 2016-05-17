@@ -25,8 +25,11 @@ public class bullet : MonoBehaviour {
             lifespan = 2.5f;
             bulletSpeed = 100;
         }
+        
         position = transform.position;
-	}
+        this.transform.rotation = Owner.transform.rotation;
+        transform.Translate(Vector3.forward * 10);
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -41,12 +44,16 @@ public class bullet : MonoBehaviour {
         if (enemy.gameObject != Owner)
         {
             Owner = enemy.gameObject;
-            if (Bullet.name == "SniperB(Clone)")
-                Owner.GetComponent<MoveCar>().Health -= 50;
-            else if (Bullet.name == "ShotgunB(Clone)")
-                Owner.GetComponent<MoveCar>().Health -= 10;
-            else if (Bullet.name == "MachineGunB(Clone)")
-                Owner.GetComponent<MoveCar>().Health -= 1;
+            if (enemy.gameObject.GetComponent<MoveCar>())
+            {
+                if (Bullet.name == "SniperB(Clone)")
+                    Owner.GetComponent<MoveCar>().Health -= 50;
+                else if (Bullet.name == "ShotgunB(Clone)")
+                    Owner.GetComponent<MoveCar>().Health -= 10;
+                else if (Bullet.name == "MachineGunB(Clone)")
+                    Owner.GetComponent<MoveCar>().Health -= 1;
+            }
+            Debug.Log("collision");
             Destroy(this.gameObject);
         }
     }

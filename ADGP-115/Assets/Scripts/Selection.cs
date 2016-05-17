@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Weapon_Selection : MonoBehaviour {
+public class Selection : MonoBehaviour {
 
     public GameObject Player;
 
@@ -9,11 +9,19 @@ public class Weapon_Selection : MonoBehaviour {
 
     public int p2Barrel = 2;
 
-    public GameObject MenuCamera;
+    public GameObject DesertArena;
+
+    public GameObject GrassArena;
+
+    public GameObject IceArena;
+
+    public GameObject FutureArena;
+
+    GameObject currentArena;
 
     // Use this for initialization
     void Start () {
-	
+        currentArena = GrassArena;
 	}
 	
 	// Update is called once per frame
@@ -61,8 +69,29 @@ public class Weapon_Selection : MonoBehaviour {
         p2Barrel = 3;
     }
 
+    public void SelectDesert()
+    {
+        currentArena = DesertArena;
+    }
+
+    public void SelectGrass()
+    {
+        currentArena = GrassArena;
+    }
+
+    public void SelectIce()
+    {
+        currentArena = IceArena;
+    }
+
+    public void SelectFuture()
+    {
+        currentArena = FutureArena;
+    }
+
     public void Finish()
     {
+        Instantiate(currentArena);
         GameObject Player1 = (GameObject)Instantiate(Player, new Vector3(0, 5, -120), Quaternion.identity);
         Player1.GetComponent<MoveCar>().barrel = p1Barrel;
         Player1.tag = "P1";
@@ -70,9 +99,5 @@ public class Weapon_Selection : MonoBehaviour {
         Player2.GetComponent<MoveCar>().barrel = p2Barrel;
         Player2.tag = "P2";
         this.GetComponentInParent<Transform>().gameObject.SetActive(false);
-        if (MenuCamera != null)
-        {
-            MenuCamera.SetActive(false);
-        }
     }
 }
