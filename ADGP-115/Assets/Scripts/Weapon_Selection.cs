@@ -9,8 +9,6 @@ public class Weapon_Selection : MonoBehaviour {
 
     public int p2Barrel = 2;
 
-    public GameObject MenuCamera;
-
     // Use this for initialization
     void Start () {
 	
@@ -70,9 +68,5 @@ public class Weapon_Selection : MonoBehaviour {
         Player2.GetComponent<MoveCar>().barrel = p2Barrel;
         Player2.tag = "P2";
         this.GetComponentInParent<Transform>().gameObject.SetActive(false);
-        if (MenuCamera != null)
-        {
-            MenuCamera.SetActive(false);
-        }
     }
 }
