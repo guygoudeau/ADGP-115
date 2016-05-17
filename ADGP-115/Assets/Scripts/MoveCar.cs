@@ -95,15 +95,15 @@ public class MoveCar : MonoBehaviour
                 shooting = false;
             if ((shooting && (Delay <= 0)) && (barrel != 3))
             {
-                GameObject Bullet = (GameObject)Instantiate(currentBullet, new Vector3(transform.position.x, transform.position.y, transform.position.z + 10), Quaternion.identity);
+                GameObject Bullet = (GameObject)Instantiate(currentBullet, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
                 Bullet.GetComponent<bullet>().Owner = this.gameObject;
                 if (barrel == 1)
                 {
                     for (int i = 1; i < 3; i++)
                     {
-                        GameObject exPosBullet = (GameObject)Instantiate(currentBullet, new Vector3(transform.position.x + (5 * i), transform.position.y, transform.position.z + 10), Quaternion.identity);
+                        GameObject exPosBullet = (GameObject)Instantiate(currentBullet, new Vector3(transform.position.x + (5 * i), transform.position.y, transform.position.z), Quaternion.identity);
                         exPosBullet.GetComponent<bullet>().Owner = this.gameObject;
-                        GameObject exNegBullet = (GameObject)Instantiate(currentBullet, new Vector3(transform.position.x - (5 * i), transform.position.y, transform.position.z + 10), Quaternion.identity);
+                        GameObject exNegBullet = (GameObject)Instantiate(currentBullet, new Vector3(transform.position.x - (5 * i), transform.position.y, transform.position.z), Quaternion.identity);
                         exNegBullet.GetComponent<bullet>().Owner = this.gameObject;
                     }
                 }
