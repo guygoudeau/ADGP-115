@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class MoveCar : MonoBehaviour
 {
     public float CarSpeed = 50.0f;
     Vector3 position;
 
-    public float Health = 10;
+    public float Health = 100;
     string movementAxisHorizontal;
     string movementAxisVertical;
     string fire;
@@ -19,6 +20,9 @@ public class MoveCar : MonoBehaviour
     float Delay = 1;
     public GameObject currentBullet;
     bool alive = true;
+
+    public Slider healthSlider;
+
     // Use this for initialization
     void Start () {
         position = transform.position;
@@ -89,6 +93,7 @@ public class MoveCar : MonoBehaviour
                 Delay = delaySpan;
             }
         }
+        healthSlider.value = Health;
         TankDeath();
         Delay -= Time.deltaTime;
 	}
