@@ -25,8 +25,11 @@ public class bullet : MonoBehaviour {
             lifespan = 2.5f;
             bulletSpeed = 100;
         }
+        
         position = transform.position;
-	}
+        this.transform.rotation = Owner.transform.rotation;
+        transform.Translate(Vector3.forward * 10);
+    }
 	
 	// Update is called once per frame
 	void Update () {
