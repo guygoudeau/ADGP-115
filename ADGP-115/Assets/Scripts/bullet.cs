@@ -41,12 +41,15 @@ public class bullet : MonoBehaviour {
         if (enemy.gameObject != Owner)
         {
             Owner = enemy.gameObject;
-            if (Bullet.name == "SniperB(Clone)")
-                Owner.GetComponent<MoveCar>().Health -= 50;
-            else if (Bullet.name == "ShotgunB(Clone)")
-                Owner.GetComponent<MoveCar>().Health -= 10;
-            else if (Bullet.name == "MachineGunB(Clone)")
-                Owner.GetComponent<MoveCar>().Health -= 1;
+            if (enemy.gameObject.GetComponent<MoveCar>())
+            {
+                if (Bullet.name == "SniperB(Clone)")
+                    Owner.GetComponent<MoveCar>().Health -= 50;
+                else if (Bullet.name == "ShotgunB(Clone)")
+                    Owner.GetComponent<MoveCar>().Health -= 10;
+                else if (Bullet.name == "MachineGunB(Clone)")
+                    Owner.GetComponent<MoveCar>().Health -= 1;
+            }
             Destroy(this.gameObject);
         }
     }
