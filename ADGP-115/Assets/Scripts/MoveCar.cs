@@ -17,6 +17,8 @@ public class MoveCar : MonoBehaviour
     public int barrel = 0;
     float delaySpan = 1;
     float Delay = 1;
+    public float Boost;
+    public bool BoostCurrent = false;
     public GameObject currentBullet;
     bool alive = true;
     // Use this for initialization
@@ -65,6 +67,21 @@ public class MoveCar : MonoBehaviour
 	void Update () {
         if (alive)
         {
+            if (CarSpeed == 150)
+            {
+                Boost = 5;
+                CarSpeed = 99;
+                BoostCurrent = true;
+            }
+            if (BoostCurrent == true)
+            {
+                Boost -= Time.deltaTime;
+            }
+            if (Boost <= 0)
+            {
+                CarSpeed = 50;
+                BoostCurrent = false;
+            }
             position.x += Input.GetAxis(movementAxisHorizontal) * CarSpeed * Time.deltaTime;
             position.z += Input.GetAxis(movementAxisVertical) * CarSpeed * Time.deltaTime;
             transform.position = new Vector3(position.x, transform.position.y, position.z);
