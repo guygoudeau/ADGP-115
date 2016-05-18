@@ -24,6 +24,7 @@ public class MoveCar : MonoBehaviour
     bool alive = true;
 
     public Slider healthSlider;
+    public Text currentWeapon;
 
     // Use this for initialization
     void Start () {
@@ -47,6 +48,7 @@ public class MoveCar : MonoBehaviour
             delaySpan = 5;
             Delay = 0;
             currentBullet = Sniper;
+            currentWeapon.text = " Sniper";
         }
         else if (barrel == 1)
         {
@@ -54,6 +56,7 @@ public class MoveCar : MonoBehaviour
             delaySpan = 3;
             Delay = 0;
             currentBullet = Shotgun;
+            currentWeapon.text = " Shotgun";
         }
         else if (barrel == 2)
         {
@@ -61,10 +64,14 @@ public class MoveCar : MonoBehaviour
             delaySpan = .1f;
             Delay = 0;
             currentBullet = MachineGun;
+            currentWeapon.text = " Machine Gun";
         }
         else if (barrel == 3)
+        {
             this.gameObject.transform.GetChild(1).transform.localScale = new Vector3(.2f, .4f, .01f);
-        this.gameObject.GetComponentInChildren<ChainsawScript>().Owner = this.gameObject;
+            this.gameObject.GetComponentInChildren<ChainsawScript>().Owner = this.gameObject;
+            currentWeapon.text = " Chainsaw";
+        }
     }
 	
 	// Update is called once per frame
