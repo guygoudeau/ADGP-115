@@ -52,7 +52,7 @@ public class MoveCar : MonoBehaviour
         }
         else if (barrel == 1)
         {
-            this.gameObject.transform.GetChild(1).transform.localScale = new Vector3(.3f, .3f, .2f);
+            this.gameObject.transform.GetChild(1).transform.localScale = new Vector3(.3f, .2f, .2f);
             delaySpan = 3;
             Delay = 0;
             currentBullet = Shotgun;

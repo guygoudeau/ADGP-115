@@ -107,6 +107,24 @@ public class Selection : MonoBehaviour {
             else if (hb.name == "P2Slider")
                 Player2.GetComponent<MoveCar>().healthSlider = hb;
         }
+        Component[] texts = transform.GetComponentInParent<Transform>().parent.GetComponentsInChildren<Text>();
+        foreach(Text weapon in texts)
+        {
+            if (weapon.name == "P1Weapon")
+                Player1.GetComponent<MoveCar>().currentWeapon = weapon;
+            else if (weapon.name == "P2Weapon")
+                Player2.GetComponent<MoveCar>().currentWeapon = weapon;
+        }
+        Component[] cameras = this.transform.GetComponentsInChildren<Camera>();
+        foreach(Camera sc in cameras)
+        {
+            if (sc.name == "SelectionCamera")
+                sc.gameObject.SetActive(false);
+        }
+        Component[] listeners = transform.GetComponentInParent<Transform>().parent.GetComponentsInChildren<AudioListener>();
+        foreach (AudioListener al in listeners)
+            if (al.name == "AudioListener")
+                al.enabled = true;
         this.transform.GetComponentInParent<Transform>().gameObject.SetActive(false);
     }
 }
