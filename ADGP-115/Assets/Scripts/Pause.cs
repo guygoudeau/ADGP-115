@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class Pause : MonoBehaviour {
 
-    public Transform pauseMenu;
+    public Transform pauseMenu, playerUI;
     public GameObject audioSource;
     bool soundToggle = true;
 
@@ -40,11 +40,13 @@ public class Pause : MonoBehaviour {
             {
                 Time.timeScale = 0;
                 pauseMenu.gameObject.SetActive(true);
+                playerUI.gameObject.SetActive(false);
             }
             else
             {
                 Time.timeScale = 1;
                 pauseMenu.gameObject.SetActive(false);
+                playerUI.gameObject.SetActive(true);
             }
         }
     }
