@@ -92,7 +92,8 @@ public class Selection : MonoBehaviour {
 
     public void Finish()
     {
-        Instantiate(currentArena);
+        GameObject arena = Instantiate(currentArena);
+        var starts = arena.GetComponentsInChildren<Transform>();
         // Creating Player1
         GameObject Player1 = (GameObject)Instantiate(Player, new Vector3(0, 5, -120), Quaternion.identity);
         Player1.GetComponent<MoveCar>().barrel = p1Barrel;
@@ -103,12 +104,14 @@ public class Selection : MonoBehaviour {
         Player2.GetComponent<MoveCar>().barrel = p2Barrel;
         Player2.tag = "P2";
         Player2.name = "Player 2";
-
-        
-
-
-        if (GameObject.Find("Player Camera").transform.parent.gameObject)
-            Debug.Log("boop");
+        Player2.GetComponentInChildren<Camera>().rect = new Rect(.5f, 0, .5f, 1);
+        foreach (var st in starts)
+        {
+            if (st.gameObject.name == "P1Start")
+                Player1.transform.position = st.position;
+            if (st.gameObject.name == "P2Start")
+                Player2.transform.position = st.position;
+        }
         Component[] sliders = transform.GetComponentInParent<Transform>().parent.GetComponentsInChildren<Slider>();
         foreach (Slider hb in sliders)
         {
