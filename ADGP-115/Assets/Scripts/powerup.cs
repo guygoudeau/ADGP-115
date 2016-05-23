@@ -12,7 +12,7 @@ public class powerup : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-    
+        position = transform.position;
 	}
 	
 	// Update is called once per frame
@@ -28,9 +28,9 @@ public class powerup : MonoBehaviour {
             fly = !fly;
         }
         if (fly == true)
-            position.y += Time.deltaTime * speed;
+            position.y +=  Time.deltaTime * speed;
         if (fly == false)
-            position.y -= Time.deltaTime * speed;
+            position.y -=  Time.deltaTime * speed;
         transform.position = new Vector3(position.x, position.y + yoffset, position.z);
 
     }
@@ -39,7 +39,7 @@ public class powerup : MonoBehaviour {
         if (enemy.gameObject != Owner)
         {
            Owner = enemy.gameObject;
-           Owner.GetComponent<MoveCar>().CarSpeed += 100;
+           Owner.GetComponent<MoveCar>().GasTank = 1;
            Destroy(this.gameObject);
         }
     }
