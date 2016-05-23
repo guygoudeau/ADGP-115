@@ -27,6 +27,7 @@ public class MoveCar : MonoBehaviour
 
     public Slider healthSlider;
     public Text currentWeapon;
+    public Transform winScreen, HUD;
 
     // Use this for initialization
     void Start () {
@@ -139,6 +140,10 @@ public class MoveCar : MonoBehaviour
     void TankDeath()
     {
         if (Health <= 0)
+        {
+            winScreen.gameObject.SetActive(true);
+            HUD.gameObject.SetActive(false);
             alive = false;
+        }
     }
 }
