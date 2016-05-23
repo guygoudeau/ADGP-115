@@ -24,6 +24,7 @@ public class MoveCar : MonoBehaviour
     bool alive = true;
 
     public Slider healthSlider;
+    public Text currentWeapon;
 
     // Use this for initialization
     void Start () {
@@ -47,13 +48,15 @@ public class MoveCar : MonoBehaviour
             delaySpan = 5;
             Delay = 0;
             currentBullet = Sniper;
+            currentWeapon.text = " Sniper";
         }
         else if (barrel == 1)
         {
-            this.gameObject.transform.GetChild(1).transform.localScale = new Vector3(.3f, .3f, .2f);
+            this.gameObject.transform.GetChild(1).transform.localScale = new Vector3(.3f, .2f, .2f);
             delaySpan = 3;
             Delay = 0;
             currentBullet = Shotgun;
+            currentWeapon.text = " Shotgun";
         }
         else if (barrel == 2)
         {
@@ -61,10 +64,14 @@ public class MoveCar : MonoBehaviour
             delaySpan = .1f;
             Delay = 0;
             currentBullet = MachineGun;
+            currentWeapon.text = " Machine Gun";
         }
         else if (barrel == 3)
+        {
             this.gameObject.transform.GetChild(1).transform.localScale = new Vector3(.2f, .4f, .01f);
-        this.gameObject.GetComponentInChildren<ChainsawScript>().Owner = this.gameObject;
+            this.gameObject.GetComponentInChildren<ChainsawScript>().Owner = this.gameObject;
+            currentWeapon.text = " Chainsaw";
+        }
     }
 	
 	// Update is called once per frame
@@ -95,15 +102,15 @@ public class MoveCar : MonoBehaviour
                 shooting = false;
             if ((shooting && (Delay <= 0)) && (barrel != 3))
             {
-                GameObject Bullet = (GameObject)Instantiate(currentBullet, new Vector3(transform.position.x, transform.position.y, transform.position.z + 10), Quaternion.identity);
+                GameObject Bullet = (GameObject)Instantiate(currentBullet, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
                 Bullet.GetComponent<bullet>().Owner = this.gameObject;
                 if (barrel == 1)
                 {
                     for (int i = 1; i < 3; i++)
                     {
-                        GameObject exPosBullet = (GameObject)Instantiate(currentBullet, new Vector3(transform.position.x + (5 * i), transform.position.y, transform.position.z + 10), Quaternion.identity);
+                        GameObject exPosBullet = (GameObject)Instantiate(currentBullet, new Vector3(transform.position.x + (5 * i), transform.position.y, transform.position.z), Quaternion.identity);
                         exPosBullet.GetComponent<bullet>().Owner = this.gameObject;
-                        GameObject exNegBullet = (GameObject)Instantiate(currentBullet, new Vector3(transform.position.x - (5 * i), transform.position.y, transform.position.z + 10), Quaternion.identity);
+                        GameObject exNegBullet = (GameObject)Instantiate(currentBullet, new Vector3(transform.position.x - (5 * i), transform.position.y, transform.position.z), Quaternion.identity);
                         exNegBullet.GetComponent<bullet>().Owner = this.gameObject;
                     }
                 }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Selection : MonoBehaviour {
 
@@ -98,6 +99,32 @@ public class Selection : MonoBehaviour {
         GameObject Player2 = (GameObject)Instantiate(Player, new Vector3(0, 5, 50), Quaternion.identity);
         Player2.GetComponent<MoveCar>().barrel = p2Barrel;
         Player2.tag = "P2";
-        this.GetComponentInParent<Transform>().gameObject.SetActive(false);
+        Component[] sliders = transform.GetComponentInParent<Transform>().parent.GetComponentsInChildren<Slider>();
+        foreach (Slider hb in sliders)
+        {
+            if (hb.name == "P1Slider")
+                Player1.GetComponent<MoveCar>().healthSlider = hb;
+            else if (hb.name == "P2Slider")
+                Player2.GetComponent<MoveCar>().healthSlider = hb;
+        }
+        Component[] texts = transform.GetComponentInParent<Transform>().parent.GetComponentsInChildren<Text>();
+        foreach(Text weapon in texts)
+        {
+            if (weapon.name == "P1Weapon")
+                Player1.GetComponent<MoveCar>().currentWeapon = weapon;
+            else if (weapon.name == "P2Weapon")
+                Player2.GetComponent<MoveCar>().currentWeapon = weapon;
+        }
+        Component[] cameras = this.transform.GetComponentsInChildren<Camera>();
+        foreach(Camera sc in cameras)
+        {
+            if (sc.name == "SelectionCamera")
+                sc.gameObject.SetActive(false);
+        }
+        Component[] listeners = transform.GetComponentInParent<Transform>().parent.GetComponentsInChildren<AudioListener>();
+        foreach (AudioListener al in listeners)
+            if (al.name == "AudioListener")
+                al.enabled = true;
+        this.transform.GetComponentInParent<Transform>().gameObject.SetActive(false);
     }
 }
