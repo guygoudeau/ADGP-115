@@ -8,7 +8,6 @@ public class MoveCar : MonoBehaviour
     Vector3 position;
 
     public float Health = 100;
-    public int GasTank = 1;
     string movementAxisHorizontal;
     string movementAxisVertical;
     string fire;
@@ -23,7 +22,6 @@ public class MoveCar : MonoBehaviour
     public bool BoostCurrent = false;
     public GameObject currentBullet;
     bool alive = true;
-    string fast;
 
     public Slider healthSlider;
     public Text currentWeapon;
@@ -37,14 +35,12 @@ public class MoveCar : MonoBehaviour
             movementAxisHorizontal = "P1Horizontal" ;
             movementAxisVertical = "P1Vertical" ;
             fire = "Fire1";
-            fast = "Fast";
         }
         if (gameObject.tag == "P2")
         {
             movementAxisHorizontal = "P2Horizontal";
             movementAxisVertical = "P2Vertical";
             fire = "Fire2";
-            fast = "Fast2";
         }
 
         if (barrel == 0)
@@ -83,14 +79,6 @@ public class MoveCar : MonoBehaviour
 	void Update () {
         if (alive)
         {
-            if (GasTank == 1)
-            {
-                if (Input.GetButtonDown(fast))
-                {
-                    CarSpeed = 150;
-                    GasTank = 1;
-                }
-            }
             if (CarSpeed == 150)
             {
                 Boost = 5;
@@ -133,8 +121,6 @@ public class MoveCar : MonoBehaviour
         healthSlider.value = Health;
         TankDeath();
         Delay -= Time.deltaTime;
-        if (GasTank == 2)
-            GasTank = 1;
 	}
 
     void TankDeath()
