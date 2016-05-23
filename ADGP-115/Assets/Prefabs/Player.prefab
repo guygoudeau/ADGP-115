@@ -110,7 +110,7 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1
+    width: 0.5
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -250,6 +250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CarSpeed: 50
   Health: 100
+  GasTank: 0
   Sniper: {fileID: 102806, guid: 00c4167e5b46b604d9f4c6204d122341, type: 2}
   Shotgun: {fileID: 102806, guid: 52e075f2f8ad6a94fadd712a0f9b6336, type: 2}
   MachineGun: {fileID: 102806, guid: be3c311efce20024884d71517b32e8a9, type: 2}
@@ -259,6 +260,8 @@ MonoBehaviour:
   currentBullet: {fileID: 0}
   healthSlider: {fileID: 0}
   currentWeapon: {fileID: 0}
+  winScreen: {fileID: 0}
+  HUD: {fileID: 0}
 --- !u!124 &12416846
 Behaviour:
   m_ObjectHideFlags: 1
