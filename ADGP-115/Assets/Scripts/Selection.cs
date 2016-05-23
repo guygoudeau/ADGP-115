@@ -138,6 +138,25 @@ public class Selection : MonoBehaviour {
         foreach (AudioListener al in listeners)
             if (al.name == "AudioListener")
                 al.enabled = true;
+        foreach(Transform ws in transform.GetComponentInParent<Transform>().parent.GetComponentsInChildren<Transform>())
+        {
+            if (ws.gameObject.name == "P1Win")
+            {
+                Player2.GetComponent<MoveCar>().winScreen = ws;
+                ws.gameObject.SetActive(false);
+            }
+            if (ws.gameObject.name == "P2Win")
+            {
+                Player1.GetComponent<MoveCar>().winScreen = ws;
+                ws.gameObject.SetActive(false);
+            }
+            if (ws.gameObject.name == "HUDCanvas")
+            {
+                Player1.GetComponent<MoveCar>().HUD = ws;
+                Player2.GetComponent<MoveCar>().HUD = ws;
+            }
+        }
+
         this.transform.GetComponentInParent<Transform>().gameObject.SetActive(false);
     }
 }
