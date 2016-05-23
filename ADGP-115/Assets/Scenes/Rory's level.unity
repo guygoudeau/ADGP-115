@@ -104,6 +104,7 @@ MonoBehaviour:
   Delay: 0
   yoffset: 5
   Owner: {fileID: 0}
+  powerNum: 0
 --- !u!1 &55296387
 GameObject:
   m_ObjectHideFlags: 0
@@ -873,7 +874,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 404396, guid: ae06e4a5b42fb6543bdfcf03e3de931b, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 404396, guid: ae06e4a5b42fb6543bdfcf03e3de931b, type: 2}
       propertyPath: m_LocalPosition.z

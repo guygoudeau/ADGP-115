@@ -109,6 +109,8 @@ public class MoveCar : MonoBehaviour
             position.x += Input.GetAxis(movementAxisHorizontal) * CarSpeed * Time.deltaTime;
             position.z += Input.GetAxis(movementAxisVertical) * CarSpeed * Time.deltaTime;
             transform.position = new Vector3(position.x, transform.position.y, position.z);
+            float yAxis = transform.rotation.eulerAngles.y + (150.0F * Input.GetAxis("Mouse X") * Time.deltaTime);
+            transform.rotation = Quaternion.Euler(0, yAxis, 0);
             if (Input.GetButtonDown(fire))
                 shooting = true;
             if (Input.GetButtonUp(fire))
