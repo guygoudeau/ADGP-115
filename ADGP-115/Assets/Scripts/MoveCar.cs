@@ -80,6 +80,7 @@ public class MoveCar : MonoBehaviour
             Delay = 0;
             currentBullet = MachineGun;
             currentWeapon.text = " Machine Gun";
+            CarSpeed = 1.2f;
         }
         else if (barrel == 3)
         {
