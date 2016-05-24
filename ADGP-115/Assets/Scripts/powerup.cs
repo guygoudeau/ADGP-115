@@ -9,6 +9,7 @@ public class powerup : MonoBehaviour {
     public float Delay;
     public float yoffset;
     public GameObject Owner;
+    public int powerNum;
 
     // Use this for initialization
     void Start () {
@@ -36,11 +37,35 @@ public class powerup : MonoBehaviour {
     }
     void OnTriggerEnter(Collider enemy)
     {
-        if (enemy.gameObject != Owner)
+        if (powerNum == 0)
         {
-           Owner = enemy.gameObject;
-           Owner.GetComponent<MoveCar>().GasTank = 1;
-           Destroy(this.gameObject);
+            if (enemy.gameObject != Owner)
+            {
+                Owner = enemy.gameObject;
+                Owner.GetComponent<MoveCar>().GasTank = 1;
+                Destroy(this.gameObject);
+            }
+        }
+
+        if (powerNum == 1)
+        {
+            if (enemy.gameObject != Owner)
+            {
+                Owner = enemy.gameObject;
+                Owner.GetComponent<MoveCar>().Health += 30;
+                if (Owner.GetComponent<MoveCar>().Health >= 100)
+                    Owner.GetComponent<MoveCar>().Health = 100;
+                Destroy(this.gameObject);
+            }
+        }
+        if (powerNum == 2)
+        {
+            if (enemy.gameObject != Owner)
+            {
+                Owner = enemy.gameObject;
+                Owner.GetComponent<MoveCar>().Health += 30;
+                Destroy(this.gameObject);
+            }
         }
     }
 
