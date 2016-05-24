@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class MoveCar : MonoBehaviour
 {
-    public float CarSpeed = 50.0f;
+    public float CarSpeed = 1.0f;
     Vector3 position;
 
     public float Health = 100;
@@ -12,6 +12,7 @@ public class MoveCar : MonoBehaviour
     string movementAxisHorizontal;
     string movementAxisVertical;
     string fire;
+    string Rotate;
     public GameObject Sniper;
     public GameObject Shotgun;
     public GameObject MachineGun;
@@ -39,6 +40,7 @@ public class MoveCar : MonoBehaviour
         {
             movementAxisHorizontal = "P1Horizontal" ;
             movementAxisVertical = "P1Vertical" ;
+            Rotate = "Mouse X";
             fire = "Fire1";
             fast = "Fast";
         }
@@ -46,6 +48,7 @@ public class MoveCar : MonoBehaviour
         {
             movementAxisHorizontal = "P2Horizontal";
             movementAxisVertical = "P2Vertical";
+            Rotate = "Joystick2";
             fire = "Fire2";
             fast = "Fast2";
         }
@@ -72,7 +75,7 @@ public class MoveCar : MonoBehaviour
             delaySpan = .1f;
             Delay = 0;
             currentBullet = MachineGun;
-            //currentWeapon.text = " Machine Gun";
+            currentWeapon.text = " Machine Gun";
         }
         else if (barrel == 3)
         {
@@ -90,15 +93,16 @@ public class MoveCar : MonoBehaviour
             {
                 if (Input.GetButtonDown(fast))
                 {
-                    CarSpeed = 150;
+                    CarSpeed = 3.0f;
                     GasTank = 1;
                 }
             }
-            if (CarSpeed == 150)
+            if (CarSpeed == 3.0f)
             {
                 Boost = 5;
-                CarSpeed = 99;
+                CarSpeed = 2.0f;
                 BoostCurrent = true;
+                GasTank -= 1;
             }
             if (BoostCurrent == true)
             {
@@ -106,19 +110,20 @@ public class MoveCar : MonoBehaviour
             }
             if (Boost <= 0)
             {
-                CarSpeed = 50;
+                CarSpeed = 1.0f;
                 BoostCurrent = false;
+                
             }
 
             position.x += Input.GetAxis(movementAxisHorizontal) * CarSpeed * Time.deltaTime;
             position.z += Input.GetAxis(movementAxisVertical) * CarSpeed * Time.deltaTime;
            
-            transform.position += transform.forward * Input.GetAxis(movementAxisVertical);
-            transform.position += transform.right * Input.GetAxis(movementAxisHorizontal);
+            transform.position += transform.forward * CarSpeed * Input.GetAxis(movementAxisVertical);
+            transform.position += transform.right * CarSpeed * Input.GetAxis(movementAxisHorizontal);
             //transform.position = new Vector3(transform.position.x + Input.GetAxis(movementAxisHorizontal), 0,transform.forward.z + Input.GetAxis(movementAxisVertical));
 
 
-            float yAxis = transform.rotation.eulerAngles.y + (150.0F * Input.GetAxis("Mouse X") * Time.deltaTime);
+            float yAxis = transform.rotation.eulerAngles.y + (150.0F * Input.GetAxis(Rotate) * Time.deltaTime);
             transform.rotation = Quaternion.Euler(0, yAxis, 0);
             if (Input.GetButtonDown(fire))
                 shooting = true;
@@ -141,7 +146,7 @@ public class MoveCar : MonoBehaviour
                 Delay = delaySpan;
             }
         }
-        //healthSlider.value = Health;
+        healthSlider.value = Health;
         TankDeath();
         Delay -= Time.deltaTime;
         if (GasTank == 2)
