@@ -29,8 +29,11 @@ public class MoveCar : MonoBehaviour
     public Text currentWeapon;
     public Transform winScreen, HUD;
 
+    private Rigidbody ridgidbody;
+
     // Use this for initialization
     void Start () {
+        ridgidbody = GetComponent<Rigidbody>();
         position = transform.position;
         if (gameObject.tag == "P1")
         {
@@ -69,7 +72,7 @@ public class MoveCar : MonoBehaviour
             delaySpan = .1f;
             Delay = 0;
             currentBullet = MachineGun;
-            currentWeapon.text = " Machine Gun";
+            //currentWeapon.text = " Machine Gun";
         }
         else if (barrel == 3)
         {
@@ -106,9 +109,15 @@ public class MoveCar : MonoBehaviour
                 CarSpeed = 50;
                 BoostCurrent = false;
             }
+
             position.x += Input.GetAxis(movementAxisHorizontal) * CarSpeed * Time.deltaTime;
             position.z += Input.GetAxis(movementAxisVertical) * CarSpeed * Time.deltaTime;
-            transform.position = new Vector3(position.x, transform.position.y, position.z);
+           
+            transform.position += transform.forward * Input.GetAxis(movementAxisVertical);
+            transform.position += transform.right * Input.GetAxis(movementAxisHorizontal);
+            //transform.position = new Vector3(transform.position.x + Input.GetAxis(movementAxisHorizontal), 0,transform.forward.z + Input.GetAxis(movementAxisVertical));
+
+
             float yAxis = transform.rotation.eulerAngles.y + (150.0F * Input.GetAxis("Mouse X") * Time.deltaTime);
             transform.rotation = Quaternion.Euler(0, yAxis, 0);
             if (Input.GetButtonDown(fire))
@@ -132,7 +141,7 @@ public class MoveCar : MonoBehaviour
                 Delay = delaySpan;
             }
         }
-        healthSlider.value = Health;
+        //healthSlider.value = Health;
         TankDeath();
         Delay -= Time.deltaTime;
         if (GasTank == 2)
