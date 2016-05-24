@@ -92,6 +92,9 @@ public class Selection : MonoBehaviour {
 
     public void Finish()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         GameObject arena = Instantiate(currentArena);
         var starts = arena.GetComponentsInChildren<Transform>();
         // Creating Player1
