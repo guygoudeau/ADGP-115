@@ -452,11 +452,11 @@ Prefab:
     - target: {fileID: 11439288, guid: 3e9941aefe182c84caf841326c7a34cb, type: 2}
       propertyPath: FutureArena
       value: 
-      objectReference: {fileID: 130110, guid: f8c35935ab5762945bc1fbe7f36b1b25, type: 2}
+      objectReference: {fileID: 195222, guid: 6a38dd57dab5c3d488680cb597d7ad50, type: 2}
     - target: {fileID: 11439288, guid: 3e9941aefe182c84caf841326c7a34cb, type: 2}
       propertyPath: IceArena
       value: 
-      objectReference: {fileID: 130110, guid: f8c35935ab5762945bc1fbe7f36b1b25, type: 2}
+      objectReference: {fileID: 195222, guid: 6a38dd57dab5c3d488680cb597d7ad50, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3e9941aefe182c84caf841326c7a34cb, type: 2}
   m_IsPrefabParent: 0

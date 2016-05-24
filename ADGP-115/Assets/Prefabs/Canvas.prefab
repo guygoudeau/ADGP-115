@@ -2452,10 +2452,13 @@ MonoBehaviour:
   Player: {fileID: 173626, guid: 3a1438b3e0690574a8274a5daf968a4e, type: 2}
   p1Barrel: 2
   p2Barrel: 2
-  DesertArena: {fileID: 188012, guid: 764112e1fcbfa6146924b099bc3f86bb, type: 2}
-  GrassArena: {fileID: 188012, guid: 764112e1fcbfa6146924b099bc3f86bb, type: 2}
-  IceArena: {fileID: 160588, guid: 2a44182821c25be45907a644b7f2839a, type: 2}
-  FutureArena: {fileID: 188012, guid: 764112e1fcbfa6146924b099bc3f86bb, type: 2}
+  DesertArena: {fileID: 197072, guid: 9311418f794791e4d8e9d9510d3d3548, type: 2}
+  GrassArena: {fileID: 197072, guid: 9311418f794791e4d8e9d9510d3d3548, type: 2}
+  IceArena: {fileID: 195222, guid: 6a38dd57dab5c3d488680cb597d7ad50, type: 2}
+  FutureArena: {fileID: 197072, guid: 9311418f794791e4d8e9d9510d3d3548, type: 2}
+  RocketPowerup: {fileID: 198916, guid: 6e52d51d9b500044a877a96822138de8, type: 2}
+  HealthPowerup: {fileID: 123334, guid: 14240805d515c8a4bbb28e411ae4f04a, type: 2}
+  BoostPowerup: {fileID: 115740, guid: ae06e4a5b42fb6543bdfcf03e3de931b, type: 2}
 --- !u!114 &11440004
 MonoBehaviour:
   m_ObjectHideFlags: 1
