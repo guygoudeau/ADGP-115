@@ -36,34 +36,38 @@ public class powerup : MonoBehaviour {
     }
     void OnTriggerEnter(Collider enemy)
     {
-        if (powerNum == 0)
+        if (enemy.gameObject.GetComponent<MoveCar>())
         {
-            if (enemy.gameObject != Owner)
-            {
-                Owner = enemy.gameObject;
-                Owner.GetComponent<MoveCar>().GasTank = 1;
-                Destroy(this.gameObject);
-            }
-        }
 
-        if (powerNum == 1)
-        {
-            if (enemy.gameObject != Owner)
+            if (powerNum == 0)
             {
-                Owner = enemy.gameObject;
-                Owner.GetComponent<MoveCar>().Health += 30;
-                if (Owner.GetComponent<MoveCar>().Health >= 100)
-                    Owner.GetComponent<MoveCar>().Health = 100;
-                Destroy(this.gameObject);
+                if (enemy.gameObject != Owner)
+                {
+                    Owner = enemy.gameObject;
+                    Owner.GetComponent<MoveCar>().GasTank = 1;
+                    Destroy(this.gameObject);
+                }
             }
-        }
-        if (powerNum == 2)
-        {
-            if (enemy.gameObject != Owner)
+
+            if (powerNum == 1)
             {
-                Owner = enemy.gameObject;
-                Owner.GetComponent<MoveCar>().HasRocket = true;
-                Destroy(this.gameObject);
+                if (enemy.gameObject != Owner)
+                {
+                    Owner = enemy.gameObject;
+                    Owner.GetComponent<MoveCar>().Health += 30;
+                    if (Owner.GetComponent<MoveCar>().Health >= 100)
+                        Owner.GetComponent<MoveCar>().Health = 100;
+                    Destroy(this.gameObject);
+                }
+            }
+            if (powerNum == 2)
+            {
+                if (enemy.gameObject != Owner)
+                {
+                    Owner = enemy.gameObject;
+                    Owner.GetComponent<MoveCar>().HasRocket = true;
+                    Destroy(this.gameObject);
+                }
             }
         }
     }
