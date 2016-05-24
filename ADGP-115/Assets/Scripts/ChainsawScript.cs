@@ -21,7 +21,7 @@ public class ChainsawScript : MonoBehaviour {
                 if (enemy.gameObject != Owner)
                     if (enemy.gameObject.GetComponent<MoveCar>())
                     {
-                        enemy.GetComponent<MoveCar>().Health -= .2f;
+                        enemy.GetComponent<MoveCar>().Health -= .5f;
                     }
             }
         }
