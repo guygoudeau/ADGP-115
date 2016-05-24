@@ -7,7 +7,6 @@ public class bullet : MonoBehaviour {
     float lifespan = .8f;
     public GameObject Bullet;
     public GameObject Owner;
-    Vector3 position;
 	// Use this for initialization
 	void Start () {
         if (Bullet.name == "SniperB(Clone)")
@@ -25,8 +24,6 @@ public class bullet : MonoBehaviour {
             lifespan = 2.5f;
             bulletSpeed = 100;
         }
-        
-        position = transform.position;
         this.transform.rotation = Owner.transform.rotation;
         transform.Translate(Vector3.forward * 10);
     }
