@@ -20,6 +20,12 @@ public class Selection : MonoBehaviour {
 
     GameObject currentArena;
 
+    public GameObject RocketPowerup;
+
+    public GameObject HealthPowerup;
+
+    public GameObject BoostPowerup;
+
     // Use this for initialization
     void Start () {
         currentArena = GrassArena;
@@ -94,7 +100,6 @@ public class Selection : MonoBehaviour {
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-
         GameObject arena = Instantiate(currentArena);
         var starts = arena.GetComponentsInChildren<Transform>();
         // Creating Player1
@@ -114,6 +119,12 @@ public class Selection : MonoBehaviour {
                 Player1.transform.position = st.position;
             if (st.gameObject.name == "P2Start")
                 Player2.transform.position = st.position;
+            if (st.gameObject.name == "Rspawn")
+                Instantiate(RocketPowerup, st.position, Quaternion.identity);
+            if (st.gameObject.name == "Hspawn1" || st.gameObject.name == "Hspawn2")
+                Instantiate(HealthPowerup, st.position, Quaternion.identity);
+            if (st.gameObject.name == "Bspawn1" || st.gameObject.name == "Bspawn2")
+                Instantiate(BoostPowerup, st.position, Quaternion.identity);
         }
         Component[] sliders = transform.GetComponentInParent<Transform>().parent.GetComponentsInChildren<Slider>();
         foreach (Slider hb in sliders)
