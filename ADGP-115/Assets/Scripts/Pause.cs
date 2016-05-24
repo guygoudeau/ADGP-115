@@ -41,12 +41,18 @@ public class Pause : MonoBehaviour {
                 Time.timeScale = 0;
                 pauseMenu.gameObject.SetActive(true);
                 playerUI.gameObject.SetActive(false);
+
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
             }
             else
             {
                 Time.timeScale = 1;
                 pauseMenu.gameObject.SetActive(false);
                 playerUI.gameObject.SetActive(true);
+              
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
             }
         }
     }
