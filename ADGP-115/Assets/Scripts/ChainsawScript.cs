@@ -14,13 +14,16 @@ public class ChainsawScript : MonoBehaviour {
 
     void OnTriggerStay(Collider enemy)
     {
-        if (Owner.GetComponent<MoveCar>().barrel == 3)
+        if (Owner.GetComponent<MoveCar>().Health > 0)
         {
-            if (enemy.gameObject != Owner)
-                if (enemy.gameObject.GetComponent<MoveCar>())
-                {
-                    enemy.GetComponent<MoveCar>().Health -= .2f;
-                }
+            if (Owner.GetComponent<MoveCar>().barrel == 3)
+            {
+                if (enemy.gameObject != Owner)
+                    if (enemy.gameObject.GetComponent<MoveCar>())
+                    {
+                        enemy.GetComponent<MoveCar>().Health -= .5f;
+                    }
+            }
         }
     }
 }
