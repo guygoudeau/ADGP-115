@@ -168,6 +168,8 @@ public class MoveCar : MonoBehaviour
     {
         if (Health <= 0)
         {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             winScreen.gameObject.SetActive(true);
             alive = false;
         }
