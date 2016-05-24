@@ -97,7 +97,7 @@ public class MoveCar : MonoBehaviour
             if (HasRocket == true && Input.GetButtonDown(Special))
             {
                 GameObject rocket = (GameObject)Instantiate(Rocket, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
-                rocket.GetComponent<bullet>().Owner = this.gameObject;
+                rocket.GetComponent<RocketScript>().Owner = this.gameObject;
                 HasRocket = false;
             }
             if (GasTank == 1)
