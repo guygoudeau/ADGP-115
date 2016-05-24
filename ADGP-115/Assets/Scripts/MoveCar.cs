@@ -158,7 +158,6 @@ public class MoveCar : MonoBehaviour
         if (Health <= 0)
         {
             winScreen.gameObject.SetActive(true);
-            HUD.gameObject.SetActive(false);
             alive = false;
         }
     }
