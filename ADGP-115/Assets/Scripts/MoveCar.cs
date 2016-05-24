@@ -6,16 +6,18 @@ public class MoveCar : MonoBehaviour
 {
     public float CarSpeed = 1.0f;
     Vector3 position;
-
+    public bool HasRocket = false;
     public float Health = 100;
     public int GasTank = 1;
     string movementAxisHorizontal;
     string movementAxisVertical;
     string fire;
     string Rotate;
+    string Special;
     public GameObject Sniper;
     public GameObject Shotgun;
     public GameObject MachineGun;
+    public GameObject Rocket;
     bool shooting = false;
     public int barrel = 0;
     float delaySpan = 1;
@@ -43,6 +45,7 @@ public class MoveCar : MonoBehaviour
             Rotate = "Mouse X";
             fire = "Fire1";
             fast = "Fast";
+            Special = "Special";
         }
         if (gameObject.tag == "P2")
         {
@@ -51,6 +54,7 @@ public class MoveCar : MonoBehaviour
             Rotate = "Joystick2";
             fire = "Fire2";
             fast = "Fast2";
+            Special = "Special2";
         }
 
         if (barrel == 0)
@@ -89,6 +93,12 @@ public class MoveCar : MonoBehaviour
 	void Update () {
         if (alive)
         {
+            if (HasRocket == true && Input.GetButtonDown(Special))
+            {
+                GameObject rocket = (GameObject)Instantiate(Rocket, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                rocket.GetComponent<bullet>().Owner = this.gameObject;
+                HasRocket = false;
+            }
             if (GasTank == 1)
             {
                 if (Input.GetButtonDown(fast))

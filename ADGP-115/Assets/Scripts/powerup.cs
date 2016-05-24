@@ -7,7 +7,6 @@ public class powerup : MonoBehaviour {
     private float speed = 6;
     public bool fly = true;
     public float Delay;
-    public float yoffset;
     public GameObject Owner;
     public int powerNum;
 
@@ -32,7 +31,7 @@ public class powerup : MonoBehaviour {
             position.y +=  Time.deltaTime * speed;
         if (fly == false)
             position.y -=  Time.deltaTime * speed;
-        transform.position = new Vector3(position.x, position.y + yoffset, position.z);
+        transform.position = new Vector3(position.x, position.y, position.z);
 
     }
     void OnTriggerEnter(Collider enemy)
@@ -63,7 +62,7 @@ public class powerup : MonoBehaviour {
             if (enemy.gameObject != Owner)
             {
                 Owner = enemy.gameObject;
-                Owner.GetComponent<MoveCar>().Health += 30;
+                Owner.GetComponent<MoveCar>().HasRocket = true;
                 Destroy(this.gameObject);
             }
         }
