@@ -137,9 +137,9 @@ public class MoveCar : MonoBehaviour
                 {
                     for (int i = 1; i < 3; i++)
                     {
-                        GameObject exPosBullet = (GameObject)Instantiate(currentBullet, new Vector3(transform.position.x + (5 * i), transform.position.y, transform.position.z), Quaternion.identity);
+                        GameObject exPosBullet = (GameObject)Instantiate(currentBullet, new Vector3(transform.position.x, transform.position.y, transform.position.z) + (transform.right * (5 * i)), Quaternion.identity);
                         exPosBullet.GetComponent<bullet>().Owner = this.gameObject;
-                        GameObject exNegBullet = (GameObject)Instantiate(currentBullet, new Vector3(transform.position.x - (5 * i), transform.position.y, transform.position.z), Quaternion.identity);
+                        GameObject exNegBullet = (GameObject)Instantiate(currentBullet, new Vector3(transform.position.x, transform.position.y, transform.position.z) - (transform.right * (5 * i)), Quaternion.identity);
                         exNegBullet.GetComponent<bullet>().Owner = this.gameObject;
                     }
                 }
