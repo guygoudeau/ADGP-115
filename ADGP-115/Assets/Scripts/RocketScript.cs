@@ -3,13 +3,15 @@ using System.Collections;
 
 public class RocketScript : MonoBehaviour {
 
-    float bulletSpeed = 800f;
+    float bulletSpeed = 100f;
     float lifespan = 4f;
     public GameObject Owner;
     // Use this for initialization
     void Start () {
-        this.transform.rotation = Quaternion.Euler(Owner.transform.rotation.x, Owner.transform.rotation.z, 90);
-        transform.Translate(Vector3.forward * 10);
+        transform.position = Owner.transform.position;
+        this.transform.rotation = Owner.transform.rotation;
+        transform.Rotate(90 * Vector3.right);
+        transform.Translate(Vector3.up * 20);
     }
 	
 	// Update is called once per frame
