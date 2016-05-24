@@ -314,6 +314,52 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0ffe6f0d364f02841a3ea6aadc66d301, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &1627336962
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 419480, guid: f8c35935ab5762945bc1fbe7f36b1b25, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -12
+      objectReference: {fileID: 0}
+    - target: {fileID: 419480, guid: f8c35935ab5762945bc1fbe7f36b1b25, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 419480, guid: f8c35935ab5762945bc1fbe7f36b1b25, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 336
+      objectReference: {fileID: 0}
+    - target: {fileID: 419480, guid: f8c35935ab5762945bc1fbe7f36b1b25, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 419480, guid: f8c35935ab5762945bc1fbe7f36b1b25, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 419480, guid: f8c35935ab5762945bc1fbe7f36b1b25, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 419480, guid: f8c35935ab5762945bc1fbe7f36b1b25, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 419480, guid: f8c35935ab5762945bc1fbe7f36b1b25, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 130110, guid: f8c35935ab5762945bc1fbe7f36b1b25, type: 2}
+      propertyPath: m_Name
+      value: Ice Arena
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: f8c35935ab5762945bc1fbe7f36b1b25, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1730393315
 Prefab:
   m_ObjectHideFlags: 0
@@ -448,7 +494,11 @@ Prefab:
     - target: {fileID: 11439288, guid: 3e9941aefe182c84caf841326c7a34cb, type: 2}
       propertyPath: FutureArena
       value: 
-      objectReference: {fileID: 160588, guid: 2a44182821c25be45907a644b7f2839a, type: 2}
+      objectReference: {fileID: 130110, guid: f8c35935ab5762945bc1fbe7f36b1b25, type: 2}
+    - target: {fileID: 11439288, guid: 3e9941aefe182c84caf841326c7a34cb, type: 2}
+      propertyPath: IceArena
+      value: 
+      objectReference: {fileID: 130110, guid: f8c35935ab5762945bc1fbe7f36b1b25, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3e9941aefe182c84caf841326c7a34cb, type: 2}
   m_IsPrefabParent: 0
