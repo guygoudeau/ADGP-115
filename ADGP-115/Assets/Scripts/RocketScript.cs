@@ -3,7 +3,7 @@ using System.Collections;
 
 public class RocketScript : MonoBehaviour {
 
-    float bulletSpeed = 100f;
+    float bulletSpeed = 200f;
     float lifespan = 4f;
     public GameObject Owner;
     // Use this for initialization
