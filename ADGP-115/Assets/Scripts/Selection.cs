@@ -10,8 +10,6 @@ public class Selection : MonoBehaviour {
 
     public int p2Barrel = 2;
 
-    public GameObject DesertArena;
-
     public GameObject GrassArena;
 
     public GameObject IceArena;
@@ -74,11 +72,6 @@ public class Selection : MonoBehaviour {
     public void p2Chainsaw()
     {
         p2Barrel = 3;
-    }
-
-    public void SelectDesert()
-    {
-        currentArena = DesertArena;
     }
 
     public void SelectGrass()
