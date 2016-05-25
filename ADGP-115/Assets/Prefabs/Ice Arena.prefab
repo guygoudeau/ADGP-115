@@ -213,7 +213,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 453606}
   m_Layer: 0
-  m_Name: Ice Arena 1
+  m_Name: Ice Arena
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
