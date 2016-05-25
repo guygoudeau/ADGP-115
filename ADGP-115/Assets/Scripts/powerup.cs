@@ -43,6 +43,7 @@ public class powerup : MonoBehaviour {
             {
                 if (enemy.gameObject != Owner)
                 {
+                    Owner.GetComponent<Spawner>().PUexists = false;
                     Owner = enemy.gameObject;
                     Owner.GetComponent<MoveCar>().GasTank = 1;
                     Destroy(this.gameObject);
@@ -53,6 +54,7 @@ public class powerup : MonoBehaviour {
             {
                 if (enemy.gameObject != Owner)
                 {
+                    Owner.GetComponent<Spawner>().PUexists = false;
                     Owner = enemy.gameObject;
                     Owner.GetComponent<MoveCar>().Health += 30;
                     if (Owner.GetComponent<MoveCar>().Health >= 100)
@@ -64,6 +66,7 @@ public class powerup : MonoBehaviour {
             {
                 if (enemy.gameObject != Owner)
                 {
+                    Owner.GetComponent<Spawner>().PUexists = false;
                     Owner = enemy.gameObject;
                     Owner.GetComponent<MoveCar>().HasRocket = true;
                     Destroy(this.gameObject);
