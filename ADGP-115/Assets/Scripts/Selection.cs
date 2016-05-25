@@ -116,9 +116,15 @@ public class Selection : MonoBehaviour {
         foreach (var st in starts)
         {
             if (st.gameObject.name == "P1Start")
+            {
                 Player1.transform.position = st.position;
+                Player1.transform.rotation = st.rotation;
+            }
             if (st.gameObject.name == "P2Start")
+            {
                 Player2.transform.position = st.position;
+                Player2.transform.rotation = st.rotation;
+            }
             if (st.gameObject.name == "Rspawn")
                 Instantiate(RocketPowerup, st.position, Quaternion.identity);
             if (st.gameObject.name == "Hspawn1" || st.gameObject.name == "Hspawn2")
