@@ -126,11 +126,11 @@ public class Selection : MonoBehaviour {
                 Player2.transform.rotation = st.rotation;
             }
             if (st.gameObject.name == "Rspawn")
-                Instantiate(RocketPowerup, st.position, Quaternion.identity);
+                st.gameObject.GetComponent<Spawner>().PowerUp = RocketPowerup;
             if (st.gameObject.name == "Hspawn1" || st.gameObject.name == "Hspawn2")
-                Instantiate(HealthPowerup, st.position, Quaternion.identity);
+                st.gameObject.GetComponent<Spawner>().PowerUp = HealthPowerup;
             if (st.gameObject.name == "Bspawn1" || st.gameObject.name == "Bspawn2")
-                Instantiate(BoostPowerup, st.position, Quaternion.identity);
+                st.gameObject.GetComponent<Spawner>().PowerUp = BoostPowerup;
         }
         Component[] sliders = transform.GetComponentInParent<Transform>().parent.GetComponentsInChildren<Slider>();
         foreach (Slider hb in sliders)

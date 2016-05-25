@@ -59,7 +59,7 @@ public class MoveCar : MonoBehaviour
 
         if (barrel == 0)
         {
-            this.gameObject.transform.GetChild(1).transform.localScale = new Vector3(.1f, .4f, .1f);
+            this.gameObject.transform.GetChild(1).transform.localScale = new Vector3(.1f, .2f, .1f);
             delaySpan = 5;
             Delay = 0;
             currentBullet = Sniper;
