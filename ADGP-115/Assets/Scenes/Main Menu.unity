@@ -3454,8 +3454,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 28, y: -9}
-  m_SizeDelta: {x: 535, y: 66}
+  m_AnchoredPosition: {x: 28, y: -17}
+  m_SizeDelta: {x: 535, y: 83}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1919706414
 MonoBehaviour:
@@ -3483,16 +3483,18 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Keyboard: WASD or Arrow Keys to move, Left Click to shoot, Esc key to pause
+  m_Text: 'Mouse & Keyboard: WASD to move, Mouse to aim and shoot, P to pause, Space
+    for Rocket, Left shift for boost
 
 
-    Xbox Controller: Left joystick to move, A button to shoot, Start button to pause'
+    Xbox Controller: Left joystick to move, Right joystick to aim, Right bumper to
+    shoot, X for rocket, B to boost'
 --- !u!222 &1919706415
 CanvasRenderer:
   m_ObjectHideFlags: 0
