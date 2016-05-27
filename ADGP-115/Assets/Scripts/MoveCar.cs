@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class MoveCar : MonoBehaviour
 {
     public float CarSpeed = 1.0f;
+    float BaseSpeed = 0.0f;
     Vector3 position;
     public bool HasRocket = false;
     public float Health = 100;
@@ -64,6 +65,7 @@ public class MoveCar : MonoBehaviour
             Delay = 0;
             currentBullet = Sniper;
             currentWeapon.text = " Sniper";
+            BaseSpeed = 60.0f;
         }
         else if (barrel == 1)
         {
@@ -72,6 +74,7 @@ public class MoveCar : MonoBehaviour
             Delay = 0;
             currentBullet = Shotgun;
             currentWeapon.text = " Shotgun";
+            BaseSpeed = 60.0f;
         }
         else if (barrel == 2)
         {
@@ -80,13 +83,14 @@ public class MoveCar : MonoBehaviour
             Delay = 0;
             currentBullet = MachineGun;
             currentWeapon.text = " Machine Gun";
-            CarSpeed = 1.2f;
+            BaseSpeed = 60.0f;
         }
         else if (barrel == 3)
         {
             this.gameObject.transform.GetChild(1).transform.localScale = new Vector3(.2f, .4f, .01f);
             this.gameObject.GetComponentInChildren<ChainsawScript>().Owner = this.gameObject;
             currentWeapon.text = " Chainsaw";
+            BaseSpeed = 70.0f;
         }
     }
 	
@@ -111,7 +115,7 @@ public class MoveCar : MonoBehaviour
             if (CarSpeed == 3.0f)
             {
                 Boost = 5;
-                CarSpeed = 2.0f;
+                CarSpeed = 120.0f;
                 BoostCurrent = true;
                 GasTank -= 1;
             }
@@ -121,16 +125,13 @@ public class MoveCar : MonoBehaviour
             }
             if (Boost <= 0)
             {
-                CarSpeed = 1.0f;
+                CarSpeed = BaseSpeed;
                 BoostCurrent = false;
                 
             }
-
-            position.x += Input.GetAxis(movementAxisHorizontal) * CarSpeed * Time.deltaTime;
-            position.z += Input.GetAxis(movementAxisVertical) * CarSpeed * Time.deltaTime;
            
-            transform.position += transform.forward * CarSpeed * Input.GetAxis(movementAxisVertical);
-            transform.position += transform.right * CarSpeed * Input.GetAxis(movementAxisHorizontal);
+            transform.position += transform.forward * CarSpeed * Input.GetAxis(movementAxisVertical) * Time.deltaTime;
+            transform.position += transform.right * CarSpeed * Input.GetAxis(movementAxisHorizontal) * Time.deltaTime;
             //transform.position = new Vector3(transform.position.x + Input.GetAxis(movementAxisHorizontal), 0,transform.forward.z + Input.GetAxis(movementAxisVertical));
 
 
