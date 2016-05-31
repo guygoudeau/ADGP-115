@@ -24,6 +24,8 @@ public class Selection : MonoBehaviour {
 
     public GameObject BoostPowerup;
 
+    public AudioSource select;
+
     // Use this for initialization
     void Start () {
         currentArena = GrassArena;
@@ -37,60 +39,72 @@ public class Selection : MonoBehaviour {
     public void p1Sniper()
     {
         p1Barrel = 0;
+        select.Play();
     }
 
     public void p2Sniper()
     {
         p2Barrel = 0;
+        select.Play();
     }
 
     public void p1Shotgun()
     {
         p1Barrel = 1;
+        select.Play();
     }
 
     public void p2Shotgun()
     {
         p2Barrel = 1;
+        select.Play();
     }
 
     public void p1MachineG()
     {
         p1Barrel = 2;
+        select.Play();
     }
 
     public void p2MachineG()
     {
         p2Barrel = 2;
+        select.Play();
     }
 
     public void p1Chainsaw()
     {
         p1Barrel = 3;
+        select.Play();
     }
 
     public void p2Chainsaw()
     {
         p2Barrel = 3;
+        select.Play();
     }
 
     public void SelectGrass()
     {
         currentArena = GrassArena;
+        select.Play();
     }
 
     public void SelectIce()
     {
         currentArena = IceArena;
+        select.Play();
     }
 
     public void SelectFuture()
     {
         currentArena = FutureArena;
+        select.Play();
     }
 
     public void Finish()
     {
+        select.Play();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         GameObject arena = Instantiate(currentArena);
