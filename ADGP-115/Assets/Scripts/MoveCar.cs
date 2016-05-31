@@ -35,6 +35,9 @@ public class MoveCar : MonoBehaviour
 
     private Rigidbody ridgidbody;
 
+    public AudioSource powerup;
+    public AudioSource takedamage;
+
     // Use this for initialization
     void Start () {
         ridgidbody = GetComponent<Rigidbody>();
