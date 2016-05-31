@@ -8,7 +8,7 @@ public class MoveCar : MonoBehaviour
     Vector3 position;
     public bool HasRocket = false;
     public float Health = 100;
-    public int GasTank = 1;
+    public int GasTank = 0;
     string movementAxisHorizontal;
     string movementAxisVertical;
     string fire;
@@ -27,17 +27,18 @@ public class MoveCar : MonoBehaviour
     public GameObject currentBullet;
     bool alive = true;
     string fast;
-
     public Slider healthSlider;
     public Text currentWeapon;
     public Transform winScreen, HUD;
-
     private Rigidbody ridgidbody;
 
     // Use this for initialization
     void Start () {
         ridgidbody = GetComponent<Rigidbody>();
-        position = transform.position;
+
+        position = transform.position; //Used to edit the player's location.
+        
+        //This edits the string values of Player 1's controls.
         if (gameObject.tag == "P1")
         {
             movementAxisHorizontal = "P1Horizontal" ;
@@ -47,7 +48,8 @@ public class MoveCar : MonoBehaviour
             fast = "Fast";
             Special = "Special";
         }
-        if (gameObject.tag == "P2")
+        //This edits the string values of Player 2's controls.
+        if (gameObject.tag == "P2") 
         {
             movementAxisHorizontal = "P2Horizontal";
             movementAxisVertical = "P2Vertical";
@@ -57,6 +59,8 @@ public class MoveCar : MonoBehaviour
             Special = "Special2";
         }
 
+        //This conditional checks if the player's barrel is a Sniper barrel,
+        //and gives the player's gun the Sniper functionality.
         if (barrel == 0)
         {
             this.gameObject.transform.GetChild(1).transform.localScale = new Vector3(.1f, .2f, .1f);
@@ -65,6 +69,8 @@ public class MoveCar : MonoBehaviour
             currentBullet = Sniper;
             currentWeapon.text = " Sniper";
         }
+        //This conditional checks if the player's barrel is a Shotgun barrel,
+        //and gives the player's gun the Shotgun functionality.
         else if (barrel == 1)
         {
             this.gameObject.transform.GetChild(1).transform.localScale = new Vector3(.3f, .2f, .2f);
@@ -73,6 +79,8 @@ public class MoveCar : MonoBehaviour
             currentBullet = Shotgun;
             currentWeapon.text = " Shotgun";
         }
+        //This conditional checks if the player's barrel is a Machine Gun barrel,
+        //and gives the player's gun the Machine Gun functionality.
         else if (barrel == 2)
         {
             this.gameObject.transform.GetChild(1).transform.localScale = new Vector3(.2f, .2f, .2f);
@@ -82,6 +90,8 @@ public class MoveCar : MonoBehaviour
             currentWeapon.text = " Machine Gun";
             CarSpeed = 1.2f;
         }
+        //This conditional checks if the player's barrel is a chainsaw,
+        //and gives the player's barrel, chainsaw functionality.
         else if (barrel == 3)
         {
             this.gameObject.transform.GetChild(1).transform.localScale = new Vector3(.2f, .4f, .01f);
@@ -92,58 +102,62 @@ public class MoveCar : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-        if (alive)
+
+        if (alive) //Checks to see if the player is alive.
         {
-            if (HasRocket == true && Input.GetButtonDown(Special))
+
+            if (HasRocket == true && Input.GetButtonDown(Special)) // Removes the rocket from the inventory and creates the rocket at barrel location
             {
                 GameObject rocket = (GameObject)Instantiate(Rocket, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
                 rocket.GetComponent<RocketScript>().Owner = this.gameObject;
                 HasRocket = false;
             }
-            if (GasTank == 1)
+            if (GasTank == 1) //checks to see if the player has a usable boost.
             {
-                if (Input.GetButtonDown(fast))
+                if (Input.GetButtonDown(fast))//If the button designated for player
                 {
                     CarSpeed = 3.0f;
-                    GasTank = 1;
+                    GasTank = 0;
                 }
             }
-            if (CarSpeed == 3.0f)
+            if (CarSpeed == 3.0f) //Speed settings fur during the boost
             {
                 Boost = 5;
                 CarSpeed = 2.0f;
                 BoostCurrent = true;
                 GasTank -= 1;
             }
-            if (BoostCurrent == true)
+            if (BoostCurrent == true) // A timer counting down for the boost duration.
             {
                 Boost -= Time.deltaTime;
             }
-            if (Boost <= 0)
+            if (Boost <= 0)  //resets carspeed after the boost duration is out.
             {
                 CarSpeed = 1.0f;
                 BoostCurrent = false;
                 
             }
-
-            position.x += Input.GetAxis(movementAxisHorizontal) * CarSpeed * Time.deltaTime;
-            position.z += Input.GetAxis(movementAxisVertical) * CarSpeed * Time.deltaTime;
+            //Moves the player
            
             transform.position += transform.forward * CarSpeed * Input.GetAxis(movementAxisVertical);
             transform.position += transform.right * CarSpeed * Input.GetAxis(movementAxisHorizontal);
-            //transform.position = new Vector3(transform.position.x + Input.GetAxis(movementAxisHorizontal), 0,transform.forward.z + Input.GetAxis(movementAxisVertical));
-
-
+            
+            //Rotates the player's camera
             float yAxis = transform.rotation.eulerAngles.y + (150.0F * Input.GetAxis(Rotate) * Time.deltaTime);
             transform.rotation = Quaternion.Euler(0, yAxis, 0);
+
+            //Fires the Player's gun as long as the designated button is pressed.
             if (Input.GetButtonDown(fire))
                 shooting = true;
-            if (Input.GetButtonUp(fire))
+            if (Input.GetButtonUp(fire)) 
                 shooting = false;
+
+            //Conditional for firing the Player's gun depending of the type of gun and its bullets and delay.
             if ((shooting && (Delay <= 0)) && (barrel != 3))
             {
                 GameObject Bullet = (GameObject)Instantiate(currentBullet, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
                 Bullet.GetComponent<bullet>().Owner = this.gameObject;
+                //Special bullet creation for shotgun.
                 if (barrel == 1)
                 {
                     for (int i = 1; i < 3; i++)
@@ -160,11 +174,12 @@ public class MoveCar : MonoBehaviour
         healthSlider.value = Health;
         TankDeath();
         Delay -= Time.deltaTime;
-        if (GasTank == 2)
+        if (GasTank == 2) //Limits the amount of boosts you can have.
             GasTank = 1;
 	}
 
-    void TankDeath()
+
+    void TankDeath() //kills the player and sends the game to the win screen.
     {
         if (Health <= 0)
         {
