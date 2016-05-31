@@ -2868,7 +2868,6 @@ MonoBehaviour:
   Player: {fileID: 173626, guid: 3a1438b3e0690574a8274a5daf968a4e, type: 2}
   p1Barrel: 2
   p2Barrel: 2
-  DesertArena: {fileID: 0}
   GrassArena: {fileID: 140388, guid: 4c80595f595a99641a2e1a663c8ca971, type: 2}
   IceArena: {fileID: 195222, guid: 6a38dd57dab5c3d488680cb597d7ad50, type: 2}
   FutureArena: {fileID: 161760, guid: bc436fbdb20e03e4190d7deb5c80f44e, type: 2}
@@ -2948,52 +2947,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1136307782}
---- !u!1001 &1151420824
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 477916, guid: bc436fbdb20e03e4190d7deb5c80f44e, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 477916, guid: bc436fbdb20e03e4190d7deb5c80f44e, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 477916, guid: bc436fbdb20e03e4190d7deb5c80f44e, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 477916, guid: bc436fbdb20e03e4190d7deb5c80f44e, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 477916, guid: bc436fbdb20e03e4190d7deb5c80f44e, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 477916, guid: bc436fbdb20e03e4190d7deb5c80f44e, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 477916, guid: bc436fbdb20e03e4190d7deb5c80f44e, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 477916, guid: bc436fbdb20e03e4190d7deb5c80f44e, type: 2}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 161760, guid: bc436fbdb20e03e4190d7deb5c80f44e, type: 2}
-      propertyPath: m_Name
-      value: Future arena
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: bc436fbdb20e03e4190d7deb5c80f44e, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1155945592
 GameObject:
   m_ObjectHideFlags: 0
