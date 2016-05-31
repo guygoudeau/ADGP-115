@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class MoveCar : MonoBehaviour
 {
     public float CarSpeed = 1.0f;
+    float BaseSpeed = 0.0f;
     Vector3 position;
     public bool HasRocket = false;
     public float Health = 100;
@@ -32,24 +33,28 @@ public class MoveCar : MonoBehaviour
     public Transform winScreen, HUD;
     private Rigidbody ridgidbody;
 
+    public AudioSource powerup;
+    public AudioSource takedamage;
+
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         ridgidbody = GetComponent<Rigidbody>();
 
         position = transform.position; //Used to edit the player's location.
-        
+
         //This edits the string values of Player 1's controls.
         if (gameObject.tag == "P1")
         {
-            movementAxisHorizontal = "P1Horizontal" ;
-            movementAxisVertical = "P1Vertical" ;
+            movementAxisHorizontal = "P1Horizontal";
+            movementAxisVertical = "P1Vertical";
             Rotate = "Mouse X";
             fire = "Fire1";
             fast = "Fast";
             Special = "Special";
         }
         //This edits the string values of Player 2's controls.
-        if (gameObject.tag == "P2") 
+        if (gameObject.tag == "P2")
         {
             movementAxisHorizontal = "P2Horizontal";
             movementAxisVertical = "P2Vertical";
@@ -68,6 +73,7 @@ public class MoveCar : MonoBehaviour
             Delay = 0;
             currentBullet = Sniper;
             currentWeapon.text = " Sniper";
+            BaseSpeed = 60.0f;
         }
         //This conditional checks if the player's barrel is a Shotgun barrel,
         //and gives the player's gun the Shotgun functionality.
@@ -78,6 +84,7 @@ public class MoveCar : MonoBehaviour
             Delay = 0;
             currentBullet = Shotgun;
             currentWeapon.text = " Shotgun";
+            BaseSpeed = 60.0f;
         }
         //This conditional checks if the player's barrel is a Machine Gun barrel,
         //and gives the player's gun the Machine Gun functionality.
@@ -88,7 +95,7 @@ public class MoveCar : MonoBehaviour
             Delay = 0;
             currentBullet = MachineGun;
             currentWeapon.text = " Machine Gun";
-            CarSpeed = 1.2f;
+            BaseSpeed = 60.0f;
         }
         //This conditional checks if the player's barrel is a chainsaw,
         //and gives the player's barrel, chainsaw functionality.
@@ -97,11 +104,13 @@ public class MoveCar : MonoBehaviour
             this.gameObject.transform.GetChild(1).transform.localScale = new Vector3(.2f, .4f, .01f);
             this.gameObject.GetComponentInChildren<ChainsawScript>().Owner = this.gameObject;
             currentWeapon.text = " Chainsaw";
+            BaseSpeed = 70.0f;
         }
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
 
         if (alive) //Checks to see if the player is alive.
         {
@@ -123,7 +132,7 @@ public class MoveCar : MonoBehaviour
             if (CarSpeed == 3.0f) //Speed settings fur during the boost
             {
                 Boost = 5;
-                CarSpeed = 2.0f;
+                CarSpeed = 120.0f;
                 BoostCurrent = true;
                 GasTank -= 1;
             }
@@ -133,23 +142,22 @@ public class MoveCar : MonoBehaviour
             }
             if (Boost <= 0)  //resets carspeed after the boost duration is out.
             {
-                CarSpeed = 1.0f;
+                CarSpeed = BaseSpeed;
                 BoostCurrent = false;
-                
+
             }
-            //Moves the player
-           
-            transform.position += transform.forward * CarSpeed * Input.GetAxis(movementAxisVertical);
-            transform.position += transform.right * CarSpeed * Input.GetAxis(movementAxisHorizontal);
-            
-            //Rotates the player's camera
+
+            transform.position += transform.forward * CarSpeed * Input.GetAxis(movementAxisVertical) * Time.deltaTime;
+            transform.position += transform.right * CarSpeed * Input.GetAxis(movementAxisHorizontal) * Time.deltaTime;
+            //transform.position = new Vector3(transform.position.x + Input.GetAxis(movementAxisHorizontal), 0,transform.forward.z + Input.GetAxis(movementAxisVertical));
+
             float yAxis = transform.rotation.eulerAngles.y + (150.0F * Input.GetAxis(Rotate) * Time.deltaTime);
             transform.rotation = Quaternion.Euler(0, yAxis, 0);
 
             //Fires the Player's gun as long as the designated button is pressed.
             if (Input.GetButtonDown(fire))
                 shooting = true;
-            if (Input.GetButtonUp(fire)) 
+            if (Input.GetButtonUp(fire))
                 shooting = false;
 
             //Conditional for firing the Player's gun depending of the type of gun and its bullets and delay.
@@ -176,7 +184,7 @@ public class MoveCar : MonoBehaviour
         Delay -= Time.deltaTime;
         if (GasTank == 2) //Limits the amount of boosts you can have.
             GasTank = 1;
-	}
+    }
 
 
     void TankDeath() //kills the player and sends the game to the win screen.
