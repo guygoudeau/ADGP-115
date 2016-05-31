@@ -5,76 +5,60 @@ using UnityEngine.UI;
 public class Selection : MonoBehaviour {
 
     public GameObject Player;
-
-    public int p1Barrel = 2;
-
-    public int p2Barrel = 2;
-
     public GameObject GrassArena;
-
     public GameObject IceArena;
-
     public GameObject FutureArena;
-
-    GameObject currentArena;
-
     public GameObject RocketPowerup;
-
     public GameObject HealthPowerup;
-
     public GameObject BoostPowerup;
-
     public AudioSource select;
-
-    public int P1currentColor = 6;
+    GameObject currentArena;
+    public int p1Barrel = 2; // tank default weapon is machine gun
+    public int p2Barrel = 2;
+    public int P1currentColor = 6; // tank default color is black
     public int P2currentColor = 6;
 
-    // Use this for initialization
-    void Start () {
-        currentArena = GrassArena;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+    void Start ()
+    {
+        currentArena = GrassArena; // starting arena is grass by default
 	}
 
-    public void p1Sniper()
+    public void p1Sniper() // Player 1's sniper button
     {
-        p1Barrel = 0;
-        select.Play();
+        p1Barrel = 0; // this changes weapon to sniper rifle
+        select.Play(); // this plays a sound when you click the button
     }
-    public void p2Sniper()
+    public void p2Sniper() // Player 2's sniper button
     {
-        p2Barrel = 0;
-        select.Play();
+        p2Barrel = 0; // this changes weapon to sniper rifle
+        select.Play(); // this plays a sound when you click the button
     }
-    public void p1Shotgun()
+    public void p1Shotgun() // Player 1's shotgun button
     {
-        p1Barrel = 1;
-        select.Play();
+        p1Barrel = 1; // switch to shotgun
+        select.Play(); // play sound
     }
-    public void p2Shotgun()
+    public void p2Shotgun() // Player 2's shotgun button
     {
         p2Barrel = 1;
         select.Play();
     }
-    public void p1MachineG()
+    public void p1MachineG() // Player 1's machine gun button
     {
-        p1Barrel = 2;
-        select.Play();
+        p1Barrel = 2; // switch to machine gun
+        select.Play(); // play sound
     }
-    public void p2MachineG()
+    public void p2MachineG() // Player 2's machine gun button
     {
         p2Barrel = 2;
         select.Play();
     }
-    public void p1Chainsaw()
+    public void p1Chainsaw() // Player 1's chainsaw button
     {
-        p1Barrel = 3;
-        select.Play();
+        p1Barrel = 3; // switch to chainsaw
+        select.Play(); // play sound
     }
-    public void p2Chainsaw()
+    public void p2Chainsaw() // Player 2's chainsaw button
     {
         p2Barrel = 3;
         select.Play();
@@ -82,52 +66,52 @@ public class Selection : MonoBehaviour {
 
     public void SelectGrass()
     {
-        currentArena = GrassArena;
-        select.Play();
+        currentArena = GrassArena; // changes arena to grass arena
+        select.Play(); // play select sound
     }
     public void SelectIce()
     {
-        currentArena = IceArena;
+        currentArena = IceArena; // change arena to ice arena
         select.Play();
     }
     public void SelectFuture()
     {
-        currentArena = FutureArena;
+        currentArena = FutureArena; // change arena to future arena
         select.Play();
     }
 
-    public void P1Blue()
+    public void P1Blue() // these functions change player 1's color
     {
-        P1currentColor = 1;
+        P1currentColor = 1; // 1 is blue
         select.Play();
     }
     public void P1Red()
     {
-        P1currentColor = 2;
+        P1currentColor = 2; // 2 is red
         select.Play();
     }
     public void P1Green()
     {
-        P1currentColor = 3;
+        P1currentColor = 3; // 3 is green
         select.Play();
     }
     public void P1Yellow()
     {
-        P1currentColor = 4;
+        P1currentColor = 4; // 4 is yellow
         select.Play();
     }
     public void P1White()
     {
-        P1currentColor = 5;
+        P1currentColor = 5; // 5 is white
         select.Play();
     }
     public void P1Black()
     {
-        P1currentColor = 6;
+        P1currentColor = 6; // 6 is black
         select.Play();
     }
 
-    public void P2Blue()
+    public void P2Blue() // these functions change player 2's color
     {
         P2currentColor = 1;
         select.Play();
@@ -158,22 +142,22 @@ public class Selection : MonoBehaviour {
         select.Play();
     }
 
-    public void Finish()
+    public void Finish() // Once everything has been selected, clicking the finish button makes it all happen
     {
-        select.Play();
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        GameObject arena = Instantiate(currentArena);
+        select.Play(); // play button select
+        Cursor.lockState = CursorLockMode.Locked; // this locks the cursor to the screen so we can turn around with the mouse
+        Cursor.visible = false; // this hides the cursor
+        GameObject arena = Instantiate(currentArena); // instantiate the prefab of whatever arena was last chosen
         var starts = arena.GetComponentsInChildren<Transform>();
 
         // Creating Player1
-        GameObject Player1 = (GameObject)Instantiate(Player, new Vector3(0, 5, -120), Quaternion.identity);
-        Player1.GetComponent<MoveCar>().barrel = p1Barrel;
-        Player1.tag = "P1";
-        Player1.name = "Player 1";
-        if (P1currentColor == 1)
+        GameObject Player1 = (GameObject)Instantiate(Player, new Vector3(0, 5, -120), Quaternion.identity); // instantiate a player prefab at certain location
+        Player1.GetComponent<MoveCar>().barrel = p1Barrel; // assign player a barrel
+        Player1.tag = "P1"; // set player 1's tag
+        Player1.name = "Player 1"; // set player 1's name
+        if (P1currentColor == 1) // depending on what color was chosen...
         {
-            Player1.GetComponent<Renderer>().material.color = Color.blue;
+            Player1.GetComponent<Renderer>().material.color = Color.blue; // ...use these to change color of material
         }
         if (P1currentColor == 2)
         {
@@ -197,13 +181,13 @@ public class Selection : MonoBehaviour {
         }
         
         // Creating Player2 
-        GameObject Player2 = (GameObject)Instantiate(Player, new Vector3(0, 5, 50), Quaternion.identity);
-        Player2.GetComponent<MoveCar>().barrel = p2Barrel;
-        Player2.tag = "P2";
-        Player2.name = "Player 2";
-        if (P2currentColor == 1)
+        GameObject Player2 = (GameObject)Instantiate(Player, new Vector3(0, 5, 50), Quaternion.identity); // instantiate another player prefab at certain location
+        Player2.GetComponent<MoveCar>().barrel = p2Barrel; // assign player a barrel
+        Player2.tag = "P2"; // set player 2's tag
+        Player2.name = "Player 2"; // set player 2's name
+        if (P2currentColor == 1) // depending on what color was chosen...
         {
-            Player2.GetComponent<Renderer>().material.color = Color.blue;
+            Player2.GetComponent<Renderer>().material.color = Color.blue; // ...use these to change color of material
         }
         if (P2currentColor == 2)
         {
