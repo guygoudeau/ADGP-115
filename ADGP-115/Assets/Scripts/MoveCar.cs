@@ -35,7 +35,6 @@ public class MoveCar : MonoBehaviour
 
     public AudioSource powerup;
     public AudioSource takedamage;
-    public AudioSource carsound;
 
     // Use this for initialization
     void Start()
@@ -115,7 +114,6 @@ public class MoveCar : MonoBehaviour
 
         if (alive) //Checks to see if the player is alive.
         {
-            Vector3 prevposition = transform.position;
             if (HasRocket == true && Input.GetButtonDown(Special)) // Removes the rocket from the inventory and creates the rocket at barrel location
             {
                 GameObject rocket = (GameObject)Instantiate(Rocket, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
@@ -150,11 +148,6 @@ public class MoveCar : MonoBehaviour
 
             transform.position += transform.forward * CarSpeed * Input.GetAxis(movementAxisVertical) * Time.deltaTime;
             transform.position += transform.right * CarSpeed * Input.GetAxis(movementAxisHorizontal) * Time.deltaTime;
-
-            if (prevposition != transform.position)
-                carsound.volume = .5f;
-            else
-                carsound.volume = .25f;
 
             float yAxis = transform.rotation.eulerAngles.y + (150.0F * Input.GetAxis(Rotate) * Time.deltaTime);
             transform.rotation = Quaternion.Euler(0, yAxis, 0);
