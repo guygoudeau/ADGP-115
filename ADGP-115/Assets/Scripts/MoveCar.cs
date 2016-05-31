@@ -152,9 +152,9 @@ public class MoveCar : MonoBehaviour
             transform.position += transform.right * CarSpeed * Input.GetAxis(movementAxisHorizontal) * Time.deltaTime;
 
             if (prevposition != transform.position)
-                carsound.volume = .5f;
-            else
                 carsound.volume = .25f;
+            else
+                carsound.volume = .10f;
 
             float yAxis = transform.rotation.eulerAngles.y + (150.0F * Input.GetAxis(Rotate) * Time.deltaTime);
             transform.rotation = Quaternion.Euler(0, yAxis, 0);
