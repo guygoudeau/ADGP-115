@@ -26,6 +26,9 @@ public class Selection : MonoBehaviour {
 
     public AudioSource select;
 
+    public int P1currentColor = 6;
+    public int P2currentColor = 6;
+
     // Use this for initialization
     void Start () {
         currentArena = GrassArena;
@@ -41,43 +44,36 @@ public class Selection : MonoBehaviour {
         p1Barrel = 0;
         select.Play();
     }
-
     public void p2Sniper()
     {
         p2Barrel = 0;
         select.Play();
     }
-
     public void p1Shotgun()
     {
         p1Barrel = 1;
         select.Play();
     }
-
     public void p2Shotgun()
     {
         p2Barrel = 1;
         select.Play();
     }
-
     public void p1MachineG()
     {
         p1Barrel = 2;
         select.Play();
     }
-
     public void p2MachineG()
     {
         p2Barrel = 2;
         select.Play();
     }
-
     public void p1Chainsaw()
     {
         p1Barrel = 3;
         select.Play();
     }
-
     public void p2Chainsaw()
     {
         p2Barrel = 3;
@@ -89,16 +85,76 @@ public class Selection : MonoBehaviour {
         currentArena = GrassArena;
         select.Play();
     }
-
     public void SelectIce()
     {
         currentArena = IceArena;
         select.Play();
     }
-
     public void SelectFuture()
     {
         currentArena = FutureArena;
+        select.Play();
+    }
+
+    public void P1Blue()
+    {
+        P1currentColor = 1;
+        select.Play();
+    }
+    public void P1Red()
+    {
+        P1currentColor = 2;
+        select.Play();
+    }
+    public void P1Green()
+    {
+        P1currentColor = 3;
+        select.Play();
+    }
+    public void P1Yellow()
+    {
+        P1currentColor = 4;
+        select.Play();
+    }
+    public void P1White()
+    {
+        P1currentColor = 5;
+        select.Play();
+    }
+    public void P1Black()
+    {
+        P1currentColor = 6;
+        select.Play();
+    }
+
+    public void P2Blue()
+    {
+        P2currentColor = 1;
+        select.Play();
+    }
+    public void P2Red()
+    {
+        P2currentColor = 2;
+        select.Play();
+    }
+    public void P2Green()
+    {
+        P2currentColor = 3;
+        select.Play();
+    }
+    public void P2Yellow()
+    {
+        P2currentColor = 4;
+        select.Play();
+    }
+    public void P2White()
+    {
+        P2currentColor = 5;
+        select.Play();
+    }
+    public void P2Black()
+    {
+        P2currentColor = 6;
         select.Play();
     }
 
@@ -109,17 +165,68 @@ public class Selection : MonoBehaviour {
         Cursor.visible = false;
         GameObject arena = Instantiate(currentArena);
         var starts = arena.GetComponentsInChildren<Transform>();
+
         // Creating Player1
         GameObject Player1 = (GameObject)Instantiate(Player, new Vector3(0, 5, -120), Quaternion.identity);
         Player1.GetComponent<MoveCar>().barrel = p1Barrel;
         Player1.tag = "P1";
         Player1.name = "Player 1";
+        if (P1currentColor == 1)
+        {
+            Player1.GetComponent<Renderer>().material.color = Color.blue;
+        }
+        if (P1currentColor == 2)
+        {
+            Player1.GetComponent<Renderer>().material.color = Color.red;
+        }
+        if (P1currentColor == 3)
+        {
+            Player1.GetComponent<Renderer>().material.color = Color.green;
+        }
+        if (P1currentColor == 4)
+        {
+            Player1.GetComponent<Renderer>().material.color = Color.yellow;
+        }
+        if (P1currentColor == 5)
+        {
+            Player1.GetComponent<Renderer>().material.color = Color.white;
+        }
+        if (P1currentColor == 6)
+        {
+            Player1.GetComponent<Renderer>().material.color = Color.black;
+        }
+        
         // Creating Player2 
         GameObject Player2 = (GameObject)Instantiate(Player, new Vector3(0, 5, 50), Quaternion.identity);
         Player2.GetComponent<MoveCar>().barrel = p2Barrel;
         Player2.tag = "P2";
         Player2.name = "Player 2";
+        if (P2currentColor == 1)
+        {
+            Player2.GetComponent<Renderer>().material.color = Color.blue;
+        }
+        if (P2currentColor == 2)
+        {
+            Player2.GetComponent<Renderer>().material.color = Color.red;
+        }
+        if (P2currentColor == 3)
+        {
+            Player2.GetComponent<Renderer>().material.color = Color.green;
+        }
+        if (P2currentColor == 4)
+        {
+            Player2.GetComponent<Renderer>().material.color = Color.yellow;
+        }
+        if (P2currentColor == 5)
+        {
+            Player2.GetComponent<Renderer>().material.color = Color.white;
+        }
+        if (P2currentColor == 6)
+        {
+            Player2.GetComponent<Renderer>().material.color = Color.black;
+        }
         Player2.GetComponentInChildren<Camera>().rect = new Rect(.5f, 0, .5f, 1);
+
         foreach (var st in starts)
         {
             if (st.gameObject.name == "P1Start")
@@ -139,6 +246,7 @@ public class Selection : MonoBehaviour {
             if (st.gameObject.name == "Bspawn1" || st.gameObject.name == "Bspawn2")
                 st.gameObject.GetComponent<Spawner>().PowerUp = BoostPowerup;
         }
+
         Component[] sliders = transform.GetComponentInParent<Transform>().parent.GetComponentsInChildren<Slider>();
         foreach (Slider hb in sliders)
         {
