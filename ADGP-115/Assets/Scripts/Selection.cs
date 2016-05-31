@@ -4,24 +4,24 @@ using UnityEngine.UI;
 
 public class Selection : MonoBehaviour {
 
-    public GameObject Player;
-    public GameObject GrassArena;
-    public GameObject IceArena;
-    public GameObject FutureArena;
-    public GameObject RocketPowerup;
-    public GameObject HealthPowerup;
-    public GameObject BoostPowerup;
-    public AudioSource select;
-    GameObject currentArena;
-    public int p1Barrel = 2; // tank default weapon is machine gun
-    public int p2Barrel = 2;
-    public int P1currentColor = 6; // tank default color is black
-    public int P2currentColor = 6;
-
-    void Start ()
+    public GameObject Player;  //Gameobject that is used for instantiating two player prefabs for the first and second player.
+    public int p1Barrel = 2;   //An integer variable that represents what kind of barrel player one will have with numbers. It's default is the machine gun barrel.
+    public int p2Barrel = 2;   //An integer variable that represents what kind of barrel player two will have with numbers. It's default is the machine gun barrel.
+    public GameObject GrassArena;   //Gameobject that is used for instantiating a grass arena.
+    public GameObject IceArena;     //Gameobject that is used for instantiating an ice arena.
+    public GameObject FutureArena;  //Gameobject that is used for instantiating a future arena.
+    GameObject currentArena;    //A Gameobject that will be set to one of the above three arenas to instantiate the arena.
+    public GameObject RocketPowerup;    //A powerup GameObject that gives a player a rocket.
+    public GameObject HealthPowerup;    //A powerup GameObject that gives a player health.
+    public GameObject BoostPowerup;     //A powerup GameObject that gives a player a boost.
+    public AudioSource select;      //An audiosource used to play an audioclip when a button is pressed.
+    public int P1currentColor = 6;  //An integer variable that represents what color player one will be with numbers. It's default is black.
+    public int P2currentColor = 6;  //An integer variable that represents what color player two will be with numbers. It's default is black.
+    
+    void Start()
     {
-        currentArena = GrassArena; // starting arena is grass by default
-	}
+        currentArena = GrassArena;  //Sets the currentArena GameObject to be the grass arena.
+    }
 
     public void p1Sniper() // Player 1's sniper button
     {
@@ -35,116 +35,116 @@ public class Selection : MonoBehaviour {
     }
     public void p1Shotgun() // Player 1's shotgun button
     {
-        p1Barrel = 1; // switch to shotgun
-        select.Play(); // play sound
+        p1Barrel = 1; // this changes weapon to shotgun
+        select.Play(); // this plays a sound when you click the button
     }
     public void p2Shotgun() // Player 2's shotgun button
     {
-        p2Barrel = 1;
-        select.Play();
+        p2Barrel = 1; // this changes weapon to shotgun
+        select.Play(); // this plays a sound when you click the button
     }
     public void p1MachineG() // Player 1's machine gun button
     {
-        p1Barrel = 2; // switch to machine gun
-        select.Play(); // play sound
+        p1Barrel = 2; // this changes weapon to machine gun
+        select.Play(); // this plays a sound when you click the button
     }
     public void p2MachineG() // Player 2's machine gun button
     {
-        p2Barrel = 2;
-        select.Play();
+        p2Barrel = 2; // this changes weapon to machine gun
+        select.Play(); // this plays a sound when you click the button
     }
     public void p1Chainsaw() // Player 1's chainsaw button
     {
-        p1Barrel = 3; // switch to chainsaw
-        select.Play(); // play sound
+        p1Barrel = 3; // this changes weapon to chainsaw
+        select.Play(); // this plays a sound when you click the button
     }
     public void p2Chainsaw() // Player 2's chainsaw button
     {
-        p2Barrel = 3;
-        select.Play();
+        p2Barrel = 3; // this changes weapon to chainsaw
+        select.Play(); // this plays a sound when you click the button
     }
 
-    public void SelectGrass()
+    public void SelectGrass() //Button for setting the currentArena to the grass arena.
     {
         currentArena = GrassArena; // changes arena to grass arena
-        select.Play(); // play select sound
+        select.Play(); // this plays a sound when you click the button
     }
-    public void SelectIce()
+    public void SelectIce() //Button for setting the currentArena to the ice arena.
     {
         currentArena = IceArena; // change arena to ice arena
-        select.Play();
+        select.Play(); // this plays a sound when you click the button
     }
-    public void SelectFuture()
+    public void SelectFuture() //Button for setting the currentArena to the future arena.
     {
         currentArena = FutureArena; // change arena to future arena
-        select.Play();
+        select.Play(); // this plays a sound when you click the button
     }
 
-    public void P1Blue() // these functions change player 1's color
+    public void P1Blue() // This button change player 1's color to blue
     {
         P1currentColor = 1; // 1 is blue
-        select.Play();
+        select.Play(); // this plays a sound when you click the button
     }
-    public void P1Red()
+    public void P1Red()  // This button change player 1's color to red
     {
         P1currentColor = 2; // 2 is red
-        select.Play();
+        select.Play(); // this plays a sound when you click the button
     }
-    public void P1Green()
+    public void P1Green() // This button change player 1's color to green
     {
         P1currentColor = 3; // 3 is green
-        select.Play();
+        select.Play(); // this plays a sound when you click the button
     }
-    public void P1Yellow()
+    public void P1Yellow() // This button change player 1's color to yellow
     {
         P1currentColor = 4; // 4 is yellow
-        select.Play();
+        select.Play(); // this plays a sound when you click the button
     }
-    public void P1White()
+    public void P1White() // This button change player 1's color to white
     {
         P1currentColor = 5; // 5 is white
-        select.Play();
+        select.Play(); // this plays a sound when you click the button
     }
-    public void P1Black()
+    public void P1Black() // This button change player 1's color to black
     {
         P1currentColor = 6; // 6 is black
-        select.Play();
+        select.Play(); // this plays a sound when you click the button
     }
 
-    public void P2Blue() // these functions change player 2's color
+    public void P2Blue() // This button change player 2's color to blue
     {
-        P2currentColor = 1;
-        select.Play();
+        P2currentColor = 1; // 1 is blue
+        select.Play(); // this plays a sound when you click the button
     }
-    public void P2Red()
+    public void P2Red()  // This button change player 2's color to red
     {
-        P2currentColor = 2;
-        select.Play();
+        P2currentColor = 2; // 2 is red
+        select.Play(); // this plays a sound when you click the button
     }
-    public void P2Green()
+    public void P2Green() // This button change player 2's color to green
     {
-        P2currentColor = 3;
-        select.Play();
+        P2currentColor = 3; // 3 is green
+        select.Play(); // this plays a sound when you click the button
     }
-    public void P2Yellow()
+    public void P2Yellow() // This button change player 2's color to yellow
     {
-        P2currentColor = 4;
-        select.Play();
+        P2currentColor = 4; // 4 is yellow
+        select.Play(); // this plays a sound when you click the button
     }
-    public void P2White()
+    public void P2White() // This button change player 2's color to white
     {
-        P2currentColor = 5;
-        select.Play();
+        P2currentColor = 5; // 5 is white
+        select.Play(); // this plays a sound when you click the button
     }
-    public void P2Black()
+    public void P2Black() // This button change player 2's color to black
     {
-        P2currentColor = 6;
-        select.Play();
+        P2currentColor = 6; // 6 is black
+        select.Play(); // this plays a sound when you click the button
     }
 
-    public void Finish() // Once everything has been selected, clicking the finish button makes it all happen
+    public void Finish() // Once everything has been selected, clicking the finish button will instantiate objects and set variables
     {
-        select.Play(); // play button select
+        select.Play(); // this plays a sound when you click the button
         Cursor.lockState = CursorLockMode.Locked; // this locks the cursor to the screen so we can turn around with the mouse
         Cursor.visible = false; // this hides the cursor
         GameObject arena = Instantiate(currentArena); // instantiate the prefab of whatever arena was last chosen
