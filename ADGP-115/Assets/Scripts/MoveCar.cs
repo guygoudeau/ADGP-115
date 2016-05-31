@@ -35,6 +35,7 @@ public class MoveCar : MonoBehaviour
 
     public AudioSource powerup;
     public AudioSource takedamage;
+    public AudioSource rocket;
 
     // Use this for initialization
     void Start()

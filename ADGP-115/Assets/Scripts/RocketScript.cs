@@ -29,6 +29,7 @@ public class RocketScript : MonoBehaviour {
             Owner = enemy.gameObject;
             if (enemy.gameObject.GetComponent<MoveCar>())
             {
+                Owner.GetComponent<MoveCar>().rocket.Play();
                 Owner.GetComponent<MoveCar>().Health -= 80;
             }
             Debug.Log("collision");
