@@ -12,17 +12,17 @@ public class bullet : MonoBehaviour {
         if (Bullet.name == "SniperB(Clone)")
         {
             lifespan = 4;
-            bulletSpeed = 800;
+            bulletSpeed = 13.4f;
         }
         if (Bullet.name == "ShotgunB(Clone)")
         {
             lifespan = 1f;
-            bulletSpeed = 100;
+            bulletSpeed = 1.7f;
         }
         if (Bullet.name == "MachineGunB(Clone)")
         {
             lifespan = 2.5f;
-            bulletSpeed = 100;
+            bulletSpeed = 1.7f;
         }
         this.transform.rotation = Owner.transform.rotation;
         transform.Translate(Vector3.forward * 10);
@@ -30,7 +30,7 @@ public class bullet : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.Translate(Vector3.forward * (bulletSpeed * Time.deltaTime));
+        transform.Translate(Vector3.forward * ((bulletSpeed * Owner.GetComponent<MoveCar>().CarSpeed) * Time.deltaTime));
         lifespan -= Time.deltaTime;
         if (lifespan <= 0)
             Destroy(Bullet);
