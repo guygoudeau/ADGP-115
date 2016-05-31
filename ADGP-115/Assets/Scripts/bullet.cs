@@ -49,7 +49,7 @@ public class bullet : MonoBehaviour {
                 else if (Bullet.name == "ShotgunB(Clone)")
                     Owner.GetComponent<MoveCar>().Health -= 10;
                 else if (Bullet.name == "MachineGunB(Clone)")
-                    Owner.GetComponent<MoveCar>().Health -= 1;
+                    Owner.GetComponent<MoveCar>().Health -= 2;
             }
             Debug.Log("collision");
             Destroy(this.gameObject);
