@@ -13,11 +13,12 @@ public class Spawner : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        if (PowerUp.GetComponent<powerup>().powerNum == 0)
+        
+        if (PowerUp.GetComponent<powerup>().powerNum == 0) //sets the delay for the boost powerup
             delayTotal = 20;
-        if (PowerUp.GetComponent<powerup>().powerNum == 1)
+        if (PowerUp.GetComponent<powerup>().powerNum == 1) //sets the delay for the health powerup
             delayTotal = 30;
-        if (PowerUp.GetComponent<powerup>().powerNum == 2)
+        if (PowerUp.GetComponent<powerup>().powerNum == 2) //sets the delay for the rocket powerup
             delayTotal = 60;
         GameObject powerup = (GameObject)Instantiate(PowerUp, transform.position, Quaternion.identity);
         powerup.GetComponent<powerup>().Owner = this.gameObject;
@@ -27,9 +28,9 @@ public class Spawner : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (!PUexists)
+        if (!PUexists) //Only spawns powerup if it isnt spawned already and starts a delay timer
             delay += Time.deltaTime;
-        if (delay >= delayTotal)
+        if (delay >= delayTotal)//spawns the powerup after the delay
         {
             GameObject powerup = (GameObject)Instantiate(PowerUp, transform.position, Quaternion.identity);
             powerup.GetComponent<powerup>().Owner = this.gameObject;
