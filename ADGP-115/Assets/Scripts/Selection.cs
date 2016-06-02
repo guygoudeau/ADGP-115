@@ -148,7 +148,7 @@ public class Selection : MonoBehaviour {
         Cursor.lockState = CursorLockMode.Locked; // this locks the cursor to the screen so we can turn around with the mouse
         Cursor.visible = false; // this hides the cursor
         GameObject arena = Instantiate(currentArena); // instantiate the prefab of whatever arena was last chosen
-        var starts = arena.GetComponentsInChildren<Transform>();
+        var starts = arena.GetComponentsInChildren<Transform>();    // Creates an array of Transform objects for use with setting where the players and power ups spawn
 
         // Creating Player1
         GameObject Player1 = (GameObject)Instantiate(Player, new Vector3(0, 5, -120), Quaternion.identity); // instantiate a player prefab at certain location
@@ -211,71 +211,71 @@ public class Selection : MonoBehaviour {
         }
         Player2.GetComponentInChildren<Camera>().rect = new Rect(.5f, 0, .5f, 1);
 
-        foreach (var st in starts)
+        foreach (var st in starts)  //runs a loop that searches through all the transforms to set the player and powerups to game objects that have been set as some of the standards of making an arena.
         {
-            if (st.gameObject.name == "P1Start")
+            if (st.gameObject.name == "P1Start")    //When it finds the P1Start game object among the transforms, it will set the Player1's position and rotation to that of the P1Start's position and rotation.
             {
                 Player1.transform.position = st.position;
                 Player1.transform.rotation = st.rotation;
             }
-            if (st.gameObject.name == "P2Start")
+            if (st.gameObject.name == "P2Start")    //When it finds the P2Start game object among the transforms, it will set the Player2's position and rotation to that of the P2Start's position and rotation.
             {
                 Player2.transform.position = st.position;
                 Player2.transform.rotation = st.rotation;
             }
-            if (st.gameObject.name == "Rspawn")
+            if (st.gameObject.name == "Rspawn")     //When it finds the Rspawn game object among the transforms, it will set the PowerUp GameObject variable of Rspawn's Spawner script to the RocketPowerup GameObject.
                 st.gameObject.GetComponent<Spawner>().PowerUp = RocketPowerup;
-            if (st.gameObject.name == "Hspawn1" || st.gameObject.name == "Hspawn2")
+            if (st.gameObject.name == "Hspawn1" || st.gameObject.name == "Hspawn2") //When it finds an Hspawn game object among the transforms, it will set the PowerUp GameObject variable of the Hspawn's Spawner script to the HealthPowerup GameObject.
                 st.gameObject.GetComponent<Spawner>().PowerUp = HealthPowerup;
-            if (st.gameObject.name == "Bspawn1" || st.gameObject.name == "Bspawn2")
+            if (st.gameObject.name == "Bspawn1" || st.gameObject.name == "Bspawn2") //When it finds a Bspawn game object among the transforms, it will set the PowerUp GameObject variable of the Bspawn's Spawner script to the BoostPowerup GameObject.
                 st.gameObject.GetComponent<Spawner>().PowerUp = BoostPowerup;
         }
 
-        Component[] sliders = transform.GetComponentInParent<Transform>().parent.GetComponentsInChildren<Slider>();
-        foreach (Slider hb in sliders)
+        Component[] sliders = transform.GetComponentInParent<Transform>().parent.GetComponentsInChildren<Slider>();     //An array is created and populated with all the Slider objects in the Canvas.
+        foreach (Slider hb in sliders)  //Searches through the array for all Sliders.
         {
-            if (hb.name == "P1Slider")
+            if (hb.name == "P1Slider")  //When the P1Slider is found, it sets the Player1's healthSlider variable in it's MoveCar script to the P1Slider to have a working health bar display.
                 Player1.GetComponent<MoveCar>().healthSlider = hb;
-            else if (hb.name == "P2Slider")
+            else if (hb.name == "P2Slider") //When the P2Slider is found, it sets the Player2's healthSlider variable in it's MoveCar script to the P2Slider to have a working health bar display.
                 Player2.GetComponent<MoveCar>().healthSlider = hb;
         }
-        Component[] texts = transform.GetComponentInParent<Transform>().parent.GetComponentsInChildren<Text>();
-        foreach(Text weapon in texts)
+        Component[] texts = transform.GetComponentInParent<Transform>().parent.GetComponentsInChildren<Text>(); //An array is created and populated with all the Text objects in the Canvas.
+        foreach(Text weapon in texts)   //Searches through the array for all Texts.
         {
-            if (weapon.name == "P1Weapon")
+            if (weapon.name == "P1Weapon")  //When the P1Weapon is found, it sets the Player1's currentWeapon variable in it's MoveCar script to the P1Weapon to have a display on the screen that print's out Player1's weapon.
                 Player1.GetComponent<MoveCar>().currentWeapon = weapon;
-            else if (weapon.name == "P2Weapon")
+            else if (weapon.name == "P2Weapon") //When the P2Weapon is found, it sets the Player2's currentWeapon variable in it's MoveCar script to the P2Weapon to have a display on the screen that print's out Player2's weapon.
                 Player2.GetComponent<MoveCar>().currentWeapon = weapon;
         }
-        Component[] cameras = this.transform.GetComponentsInChildren<Camera>();
-        foreach(Camera sc in cameras)
+        Component[] cameras = this.transform.GetComponentsInChildren<Camera>(); //An array is created and populated with Camera objects from the Canvas.
+        foreach(Camera sc in cameras)   //Searches through the array for all Cameras.
         {
-            if (sc.name == "SelectionCamera")
+            if (sc.name == "SelectionCamera")   //When the SelectionCamera is found it is de-activated so it does not conflict with the Players' cameras.
                 sc.gameObject.SetActive(false);
         }
-        Component[] listeners = transform.GetComponentInParent<Transform>().parent.GetComponentsInChildren<AudioListener>();
-        foreach (AudioListener al in listeners)
-            if (al.name == "AudioListener")
+        Component[] listeners = transform.GetComponentInParent<Transform>().parent.GetComponentsInChildren<AudioListener>();    //An array is created and populated with AudioListener objects from the Canvas.
+        foreach (AudioListener al in listeners) //Searches through the array for all AudioListeners.
+            if (al.name == "AudioListener") //Finds the AudioListener AudioListener and enables it so AudioSources can be heard.
                 al.enabled = true;
-        foreach(Transform ws in transform.GetComponentInParent<Transform>().parent.GetComponentsInChildren<Transform>())
+        foreach(Transform ws in transform.GetComponentInParent<Transform>().parent.GetComponentsInChildren<Transform>())    //Searches through every Transform object in the Canvas.
         {
-            if (ws.gameObject.name == "P1Win")
+            if (ws.gameObject.name == "P1Win")  //When the P1Win gameObject is found it sets Player2's winScreen variable in it's MoveCar script to P1Win and sets the P1Win active trait to false.
             {
                 Player2.GetComponent<MoveCar>().winScreen = ws;
                 ws.gameObject.SetActive(false);
             }
-            if (ws.gameObject.name == "P2Win")
+            if (ws.gameObject.name == "P2Win")  //When the P2Win gameObject is found it sets Player1's winScreen variable in it's MoveCar script to P2Win and sets the P2Win active trait to false.
             {
                 Player1.GetComponent<MoveCar>().winScreen = ws;
                 ws.gameObject.SetActive(false);
             }
-            if (ws.gameObject.name == "HUDCanvas")
+            if (ws.gameObject.name == "HUDCanvas")  //When the HUDCanvas gameObject is found both Players' HUD variables in their MoveCar scripts are set to the HUDCanvas.
             {
                 Player1.GetComponent<MoveCar>().HUD = ws;
                 Player2.GetComponent<MoveCar>().HUD = ws;
             }
         }
 
-        this.transform.GetComponentInParent<Transform>().gameObject.SetActive(false);
+        this.transform.GetComponentInParent<Transform>().gameObject.SetActive(false);   //The last thing the Finish function does, the Selection Menu's active trait is set to false.
     }
 }
