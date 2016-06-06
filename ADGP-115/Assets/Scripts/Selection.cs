@@ -4,24 +4,24 @@ using UnityEngine.UI;
 
 public class Selection : MonoBehaviour {
 
-    public GameObject Player;
-    public GameObject GrassArena;
-    public GameObject IceArena;
-    public GameObject FutureArena;
-    public GameObject RocketPowerup;
-    public GameObject HealthPowerup;
-    public GameObject BoostPowerup;
-    public AudioSource select;
-    GameObject currentArena;
-    public int p1Barrel = 2; // tank default weapon is machine gun
-    public int p2Barrel = 2;
-    public int P1currentColor = 6; // tank default color is black
-    public int P2currentColor = 6;
-
-    void Start ()
+    public GameObject Player;  //Gameobject that is used for instantiating two player prefabs for the first and second player.
+    public int p1Barrel = 2;   //An integer variable that represents what kind of barrel player one will have with numbers. It's default is the machine gun barrel.
+    public int p2Barrel = 2;   //An integer variable that represents what kind of barrel player two will have with numbers. It's default is the machine gun barrel.
+    public GameObject GrassArena;   //Gameobject that is used for instantiating a grass arena.
+    public GameObject IceArena;     //Gameobject that is used for instantiating an ice arena.
+    public GameObject FutureArena;  //Gameobject that is used for instantiating a future arena.
+    GameObject currentArena;    //A Gameobject that will be set to one of the above three arenas to instantiate the arena.
+    public GameObject RocketPowerup;    //A powerup GameObject that gives a player a rocket.
+    public GameObject HealthPowerup;    //A powerup GameObject that gives a player health.
+    public GameObject BoostPowerup;     //A powerup GameObject that gives a player a boost.
+    public AudioSource select;      //An audiosource used to play an audioclip when a button is pressed.
+    public int P1currentColor = 6;  //An integer variable that represents what color player one will be with numbers. It's default is black.
+    public int P2currentColor = 6;  //An integer variable that represents what color player two will be with numbers. It's default is black.
+    
+    void Start()
     {
-        currentArena = GrassArena; // starting arena is grass by default
-	}
+        currentArena = GrassArena;  //Sets the currentArena GameObject to be the grass arena.
+    }
 
     public void p1Sniper() // Player 1's sniper button
     {
@@ -35,120 +35,120 @@ public class Selection : MonoBehaviour {
     }
     public void p1Shotgun() // Player 1's shotgun button
     {
-        p1Barrel = 1; // switch to shotgun
-        select.Play(); // play sound
+        p1Barrel = 1; // this changes weapon to shotgun
+        select.Play(); // this plays a sound when you click the button
     }
     public void p2Shotgun() // Player 2's shotgun button
     {
-        p2Barrel = 1;
-        select.Play();
+        p2Barrel = 1; // this changes weapon to shotgun
+        select.Play(); // this plays a sound when you click the button
     }
     public void p1MachineG() // Player 1's machine gun button
     {
-        p1Barrel = 2; // switch to machine gun
-        select.Play(); // play sound
+        p1Barrel = 2; // this changes weapon to machine gun
+        select.Play(); // this plays a sound when you click the button
     }
     public void p2MachineG() // Player 2's machine gun button
     {
-        p2Barrel = 2;
-        select.Play();
+        p2Barrel = 2; // this changes weapon to machine gun
+        select.Play(); // this plays a sound when you click the button
     }
     public void p1Chainsaw() // Player 1's chainsaw button
     {
-        p1Barrel = 3; // switch to chainsaw
-        select.Play(); // play sound
+        p1Barrel = 3; // this changes weapon to chainsaw
+        select.Play(); // this plays a sound when you click the button
     }
     public void p2Chainsaw() // Player 2's chainsaw button
     {
-        p2Barrel = 3;
-        select.Play();
+        p2Barrel = 3; // this changes weapon to chainsaw
+        select.Play(); // this plays a sound when you click the button
     }
 
-    public void SelectGrass()
+    public void SelectGrass() //Button for setting the currentArena to the grass arena.
     {
         currentArena = GrassArena; // changes arena to grass arena
-        select.Play(); // play select sound
+        select.Play(); // this plays a sound when you click the button
     }
-    public void SelectIce()
+    public void SelectIce() //Button for setting the currentArena to the ice arena.
     {
         currentArena = IceArena; // change arena to ice arena
-        select.Play();
+        select.Play(); // this plays a sound when you click the button
     }
-    public void SelectFuture()
+    public void SelectFuture() //Button for setting the currentArena to the future arena.
     {
         currentArena = FutureArena; // change arena to future arena
-        select.Play();
+        select.Play(); // this plays a sound when you click the button
     }
 
-    public void P1Blue() // these functions change player 1's color
+    public void P1Blue() // This button change player 1's color to blue
     {
         P1currentColor = 1; // 1 is blue
-        select.Play();
+        select.Play(); // this plays a sound when you click the button
     }
-    public void P1Red()
+    public void P1Red()  // This button change player 1's color to red
     {
         P1currentColor = 2; // 2 is red
-        select.Play();
+        select.Play(); // this plays a sound when you click the button
     }
-    public void P1Green()
+    public void P1Green() // This button change player 1's color to green
     {
         P1currentColor = 3; // 3 is green
-        select.Play();
+        select.Play(); // this plays a sound when you click the button
     }
-    public void P1Yellow()
+    public void P1Yellow() // This button change player 1's color to yellow
     {
         P1currentColor = 4; // 4 is yellow
-        select.Play();
+        select.Play(); // this plays a sound when you click the button
     }
-    public void P1White()
+    public void P1White() // This button change player 1's color to white
     {
         P1currentColor = 5; // 5 is white
-        select.Play();
+        select.Play(); // this plays a sound when you click the button
     }
-    public void P1Black()
+    public void P1Black() // This button change player 1's color to black
     {
         P1currentColor = 6; // 6 is black
-        select.Play();
+        select.Play(); // this plays a sound when you click the button
     }
 
-    public void P2Blue() // these functions change player 2's color
+    public void P2Blue() // This button change player 2's color to blue
     {
-        P2currentColor = 1;
-        select.Play();
+        P2currentColor = 1; // 1 is blue
+        select.Play(); // this plays a sound when you click the button
     }
-    public void P2Red()
+    public void P2Red()  // This button change player 2's color to red
     {
-        P2currentColor = 2;
-        select.Play();
+        P2currentColor = 2; // 2 is red
+        select.Play(); // this plays a sound when you click the button
     }
-    public void P2Green()
+    public void P2Green() // This button change player 2's color to green
     {
-        P2currentColor = 3;
-        select.Play();
+        P2currentColor = 3; // 3 is green
+        select.Play(); // this plays a sound when you click the button
     }
-    public void P2Yellow()
+    public void P2Yellow() // This button change player 2's color to yellow
     {
-        P2currentColor = 4;
-        select.Play();
+        P2currentColor = 4; // 4 is yellow
+        select.Play(); // this plays a sound when you click the button
     }
-    public void P2White()
+    public void P2White() // This button change player 2's color to white
     {
-        P2currentColor = 5;
-        select.Play();
+        P2currentColor = 5; // 5 is white
+        select.Play(); // this plays a sound when you click the button
     }
-    public void P2Black()
+    public void P2Black() // This button change player 2's color to black
     {
-        P2currentColor = 6;
-        select.Play();
+        P2currentColor = 6; // 6 is black
+        select.Play(); // this plays a sound when you click the button
     }
 
-    public void Finish() // Once everything has been selected, clicking the finish button makes it all happen
+    public void Finish() // Once everything has been selected, clicking the finish button will instantiate objects and set variables
     {
-        select.Play(); // play button select
+        select.Play(); // this plays a sound when you click the button
         Cursor.lockState = CursorLockMode.Locked; // this locks the cursor to the screen so we can turn around with the mouse
         Cursor.visible = false; // this hides the cursor
         GameObject arena = Instantiate(currentArena); // instantiate the prefab of whatever arena was last chosen
-        var starts = arena.GetComponentsInChildren<Transform>();
+        var starts = arena.GetComponentsInChildren<Transform>();    // Creates an array of Transform objects for use with setting where the players and power ups spawn
 
         // Creating Player1
         GameObject Player1 = (GameObject)Instantiate(Player, new Vector3(0, 5, -120), Quaternion.identity); // instantiate a player prefab at certain location
@@ -211,71 +211,71 @@ public class Selection : MonoBehaviour {
         }
         Player2.GetComponentInChildren<Camera>().rect = new Rect(.5f, 0, .5f, 1);
 
-        foreach (var st in starts)
+        foreach (var st in starts)  //runs a loop that searches through all the transforms to set the player and powerups to game objects that have been set as some of the standards of making an arena.
         {
-            if (st.gameObject.name == "P1Start")
+            if (st.gameObject.name == "P1Start")    //When it finds the P1Start game object among the transforms, it will set the Player1's position and rotation to that of the P1Start's position and rotation.
             {
                 Player1.transform.position = st.position;
                 Player1.transform.rotation = st.rotation;
             }
-            if (st.gameObject.name == "P2Start")
+            if (st.gameObject.name == "P2Start")    //When it finds the P2Start game object among the transforms, it will set the Player2's position and rotation to that of the P2Start's position and rotation.
             {
                 Player2.transform.position = st.position;
                 Player2.transform.rotation = st.rotation;
             }
-            if (st.gameObject.name == "Rspawn")
+            if (st.gameObject.name == "Rspawn")     //When it finds the Rspawn game object among the transforms, it will set the PowerUp GameObject variable of Rspawn's Spawner script to the RocketPowerup GameObject.
                 st.gameObject.GetComponent<Spawner>().PowerUp = RocketPowerup;
-            if (st.gameObject.name == "Hspawn1" || st.gameObject.name == "Hspawn2")
+            if (st.gameObject.name == "Hspawn1" || st.gameObject.name == "Hspawn2") //When it finds an Hspawn game object among the transforms, it will set the PowerUp GameObject variable of the Hspawn's Spawner script to the HealthPowerup GameObject.
                 st.gameObject.GetComponent<Spawner>().PowerUp = HealthPowerup;
-            if (st.gameObject.name == "Bspawn1" || st.gameObject.name == "Bspawn2")
+            if (st.gameObject.name == "Bspawn1" || st.gameObject.name == "Bspawn2") //When it finds a Bspawn game object among the transforms, it will set the PowerUp GameObject variable of the Bspawn's Spawner script to the BoostPowerup GameObject.
                 st.gameObject.GetComponent<Spawner>().PowerUp = BoostPowerup;
         }
 
-        Component[] sliders = transform.GetComponentInParent<Transform>().parent.GetComponentsInChildren<Slider>();
-        foreach (Slider hb in sliders)
+        Component[] sliders = transform.GetComponentInParent<Transform>().parent.GetComponentsInChildren<Slider>();     //An array is created and populated with all the Slider objects in the Canvas.
+        foreach (Slider hb in sliders)  //Searches through the array for all Sliders.
         {
-            if (hb.name == "P1Slider")
+            if (hb.name == "P1Slider")  //When the P1Slider is found, it sets the Player1's healthSlider variable in it's MoveCar script to the P1Slider to have a working health bar display.
                 Player1.GetComponent<MoveCar>().healthSlider = hb;
-            else if (hb.name == "P2Slider")
+            else if (hb.name == "P2Slider") //When the P2Slider is found, it sets the Player2's healthSlider variable in it's MoveCar script to the P2Slider to have a working health bar display.
                 Player2.GetComponent<MoveCar>().healthSlider = hb;
         }
-        Component[] texts = transform.GetComponentInParent<Transform>().parent.GetComponentsInChildren<Text>();
-        foreach(Text weapon in texts)
+        Component[] texts = transform.GetComponentInParent<Transform>().parent.GetComponentsInChildren<Text>(); //An array is created and populated with all the Text objects in the Canvas.
+        foreach(Text weapon in texts)   //Searches through the array for all Texts.
         {
-            if (weapon.name == "P1Weapon")
+            if (weapon.name == "P1Weapon")  //When the P1Weapon is found, it sets the Player1's currentWeapon variable in it's MoveCar script to the P1Weapon to have a display on the screen that print's out Player1's weapon.
                 Player1.GetComponent<MoveCar>().currentWeapon = weapon;
-            else if (weapon.name == "P2Weapon")
+            else if (weapon.name == "P2Weapon") //When the P2Weapon is found, it sets the Player2's currentWeapon variable in it's MoveCar script to the P2Weapon to have a display on the screen that print's out Player2's weapon.
                 Player2.GetComponent<MoveCar>().currentWeapon = weapon;
         }
-        Component[] cameras = this.transform.GetComponentsInChildren<Camera>();
-        foreach(Camera sc in cameras)
+        Component[] cameras = this.transform.GetComponentsInChildren<Camera>(); //An array is created and populated with Camera objects from the Canvas.
+        foreach(Camera sc in cameras)   //Searches through the array for all Cameras.
         {
-            if (sc.name == "SelectionCamera")
+            if (sc.name == "SelectionCamera")   //When the SelectionCamera is found it is de-activated so it does not conflict with the Players' cameras.
                 sc.gameObject.SetActive(false);
         }
-        Component[] listeners = transform.GetComponentInParent<Transform>().parent.GetComponentsInChildren<AudioListener>();
-        foreach (AudioListener al in listeners)
-            if (al.name == "AudioListener")
+        Component[] listeners = transform.GetComponentInParent<Transform>().parent.GetComponentsInChildren<AudioListener>();    //An array is created and populated with AudioListener objects from the Canvas.
+        foreach (AudioListener al in listeners) //Searches through the array for all AudioListeners.
+            if (al.name == "AudioListener") //Finds the AudioListener AudioListener and enables it so AudioSources can be heard.
                 al.enabled = true;
-        foreach(Transform ws in transform.GetComponentInParent<Transform>().parent.GetComponentsInChildren<Transform>())
+        foreach(Transform ws in transform.GetComponentInParent<Transform>().parent.GetComponentsInChildren<Transform>())    //Searches through every Transform object in the Canvas.
         {
-            if (ws.gameObject.name == "P1Win")
+            if (ws.gameObject.name == "P1Win")  //When the P1Win gameObject is found it sets Player2's winScreen variable in it's MoveCar script to P1Win and sets the P1Win active trait to false.
             {
                 Player2.GetComponent<MoveCar>().winScreen = ws;
                 ws.gameObject.SetActive(false);
             }
-            if (ws.gameObject.name == "P2Win")
+            if (ws.gameObject.name == "P2Win")  //When the P2Win gameObject is found it sets Player1's winScreen variable in it's MoveCar script to P2Win and sets the P2Win active trait to false.
             {
                 Player1.GetComponent<MoveCar>().winScreen = ws;
                 ws.gameObject.SetActive(false);
             }
-            if (ws.gameObject.name == "HUDCanvas")
+            if (ws.gameObject.name == "HUDCanvas")  //When the HUDCanvas gameObject is found both Players' HUD variables in their MoveCar scripts are set to the HUDCanvas.
             {
                 Player1.GetComponent<MoveCar>().HUD = ws;
                 Player2.GetComponent<MoveCar>().HUD = ws;
             }
         }
 
-        this.transform.GetComponentInParent<Transform>().gameObject.SetActive(false);
+        this.transform.GetComponentInParent<Transform>().gameObject.SetActive(false);   //The last thing the Finish function does, the Selection Menu's active trait is set to false.
     }
 }
