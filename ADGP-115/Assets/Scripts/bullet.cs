@@ -24,11 +24,8 @@ public class bullet : MonoBehaviour {
             lifespan = 2.5f;
             bulletSpeed = 1.7f;
         }
-        Debug.Log("break @ bullet");
-        Debug.Break();
-        //this.transform.rotation = Owner.transform.rotation; //Sets it's rotation to the Owner object, which at this point would be the Player that spawned it.
-       // transform.forward = Owner.transform.forward;
-        //transform.Translate(Vector3.forward * 10);  //Translates the bullet to be ten units forward so it doesn't collide with the Owner's barrel.
+        this.transform.rotation = Owner.transform.rotation; //Sets it's rotation to the Owner object, which at this point would be the Player that spawned it.
+        transform.Translate(Vector3.forward * 10);  //Translates the bullet to be ten units forward so it doesn't collide with the Owner's barrel.
     }
 	
 	// Update is called once per frame
