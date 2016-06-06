@@ -21,7 +21,7 @@ public class powerup : MonoBehaviour {
 
         
         Delay += Time.deltaTime;
-
+        //the following block of code makes the powerups appear to float
         if (Delay >= 0.5f)
         {
             Delay = 0;
@@ -34,16 +34,17 @@ public class powerup : MonoBehaviour {
         transform.position = new Vector3(position.x, position.y, position.z);
 
     }
-    void OnTriggerEnter(Collider enemy)
+    void OnTriggerEnter(Collider enemy) //allows the powerup to be picked up on collision.
     {
         if (enemy.gameObject.GetComponent<MoveCar>())
         {
 
-            if (powerNum == 0)
+            if (powerNum == 0)//this is the effects of the Boost powerup
             {
                 if (enemy.gameObject != Owner)
                 {
-                    Owner.GetComponent<Spawner>().PUexists = false;
+                    Owner.GetComponent<Spawner>().PUexists = false;//Works with the spawner object to control the location of the powerup
+                    Owner = enemy.gameObject;
                     Owner = enemy.gameObject;
                     Owner.GetComponent<MoveCar>().GasTank = 1;
                     Owner.GetComponent<MoveCar>().powerup.Play();
@@ -51,24 +52,25 @@ public class powerup : MonoBehaviour {
                 }
             }
 
-            if (powerNum == 1)
+            if (powerNum == 1) //this is the effects of the health pack powerup
             {
                 if (enemy.gameObject != Owner)
                 {
-                    Owner.GetComponent<Spawner>().PUexists = false;
+                    Owner.GetComponent<Spawner>().PUexists = false;//Works with the spawner object to control the location of the powerup
                     Owner = enemy.gameObject;
-                    Owner.GetComponent<MoveCar>().Health += 30;
+                    Owner = enemy.gameObject;
+                    Owner.GetComponent<MoveCar>().Health += 30; //calculation for the health pack
                     if (Owner.GetComponent<MoveCar>().Health >= 100)
                         Owner.GetComponent<MoveCar>().Health = 100;
                     Owner.GetComponent<MoveCar>().powerup.Play();
                     Destroy(this.gameObject);
                 }
             }
-            if (powerNum == 2)
+            if (powerNum == 2)//this is the effects of the Rocket powerup
             {
                 if (enemy.gameObject != Owner)
                 {
-                    Owner.GetComponent<Spawner>().PUexists = false;
+                    Owner.GetComponent<Spawner>().PUexists = false; //Works with the spawner object to control the location of the powerup
                     Owner = enemy.gameObject;
                     Owner.GetComponent<MoveCar>().HasRocket = true;
                     Owner.GetComponent<MoveCar>().powerup.Play();
