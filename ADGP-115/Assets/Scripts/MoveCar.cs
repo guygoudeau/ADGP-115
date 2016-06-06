@@ -112,7 +112,7 @@ public class MoveCar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Debug.DrawRay(transform.position, transform.forward * 1000.0f);
         if (alive) //Checks to see if the player is alive.
         {
             if (HasRocket == true && Input.GetButtonDown(Special)) // Removes the rocket from the inventory and creates the rocket at barrel location
@@ -162,8 +162,16 @@ public class MoveCar : MonoBehaviour
             //Conditional for firing the Player's gun depending of the type of gun and its bullets and delay.
             if ((shooting && (Delay <= 0)) && (barrel != 3))
             {
-                GameObject Bullet = (GameObject)Instantiate(currentBullet, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
-                Bullet.GetComponent<bullet>().Owner = this.gameObject;
+                GameObject Bullet = (GameObject)Instantiate(currentBullet, transform.position, Quaternion.identity);
+                Bullet.transform.forward = transform.forward;
+                
+                Debug.DrawRay(Bullet.transform.position, Bullet.transform.forward * 1000f);
+                
+                
+                
+                Debug.Log("forward: " + transform.forward);
+                Debug.Log("break @ bullet");
+                Debug.Break();
                 //Special bullet creation for shotgun.
                 if (barrel == 1)
                 {
@@ -171,6 +179,7 @@ public class MoveCar : MonoBehaviour
                     {
                         GameObject exPosBullet = (GameObject)Instantiate(currentBullet, new Vector3(transform.position.x, transform.position.y, transform.position.z) + (transform.right * (5 * i)), Quaternion.identity);
                         exPosBullet.GetComponent<bullet>().Owner = this.gameObject;
+                        
                         GameObject exNegBullet = (GameObject)Instantiate(currentBullet, new Vector3(transform.position.x, transform.position.y, transform.position.z) - (transform.right * (5 * i)), Quaternion.identity);
                         exNegBullet.GetComponent<bullet>().Owner = this.gameObject;
                     }
