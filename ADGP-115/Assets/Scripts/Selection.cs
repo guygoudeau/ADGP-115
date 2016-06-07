@@ -247,12 +247,6 @@ public class Selection : MonoBehaviour {
             else if (weapon.name == "P2Weapon") //When the P2Weapon is found, it sets the Player2's currentWeapon variable in it's MoveCar script to the P2Weapon to have a display on the screen that print's out Player2's weapon.
                 Player2.GetComponent<MoveCar>().currentWeapon = weapon;
         }
-        Component[] cameras = this.transform.GetComponentsInChildren<Camera>(); //An array is created and populated with Camera objects from the Canvas.
-        foreach (Camera sc in cameras)   //Searches through the array for all Cameras.
-        {
-            if (sc.name == "SelectionCamera")   //When the SelectionCamera is found it is de-activated so it does not conflict with the Players' cameras.
-                sc.gameObject.SetActive(false);
-        }
         Component[] listeners = transform.GetComponentInParent<Transform>().parent.GetComponentsInChildren<AudioListener>();    //An array is created and populated with AudioListener objects from the Canvas.
         foreach (AudioListener al in listeners) //Searches through the array for all AudioListeners.
             if (al.name == "AudioListener") //Finds the AudioListener AudioListener and enables it so AudioSources can be heard.
