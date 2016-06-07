@@ -50,13 +50,13 @@ public class MinimapScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        MapPlayer1.transform.position = new Vector3(Player1.transform.position.x + -1515, MapPlayer1.transform.position.y, Player1.transform.position.z);
-        MapPlayer2.transform.position = new Vector3(Player2.transform.position.x + -1515, MapPlayer2.transform.position.y, Player2.transform.position.z);
-        MapHealth1.transform.position = new Vector3(HealthP1.transform.position.x + -1515, MapPlayer1.transform.position.y, HealthP1.transform.position.z);
-        MapHealth2.transform.position = new Vector3(HealthP2.transform.position.x + -1515, MapPlayer2.transform.position.y, HealthP2.transform.position.z);
-        MapSpeed1.transform.position = new Vector3(SpeedP1.transform.position.x + -1515, MapSpeed1.transform.position.y, SpeedP1.transform.position.z);
-        MapSpeed2.transform.position = new Vector3(SpeedP2.transform.position.x + -1515, MapSpeed2.transform.position.y, SpeedP2.transform.position.z);
-        MapRocket.transform.position = new Vector3(RocketP.transform.position.x + -1515, MapRocket.transform.position.y, RocketP.transform.position.z);
+        MapPlayer1.transform.position = new Vector3(Player1.transform.position.x, MapPlayer1.transform.position.y, Player1.transform.position.z);
+        MapPlayer2.transform.position = new Vector3(Player2.transform.position.x, MapPlayer2.transform.position.y, Player2.transform.position.z);
+        MapHealth1.transform.position = new Vector3(HealthP1.transform.position.x, MapPlayer1.transform.position.y, HealthP1.transform.position.z);
+        MapHealth2.transform.position = new Vector3(HealthP2.transform.position.x, MapPlayer2.transform.position.y, HealthP2.transform.position.z);
+        MapSpeed1.transform.position = new Vector3(SpeedP1.transform.position.x, MapSpeed1.transform.position.y, SpeedP1.transform.position.z);
+        MapSpeed2.transform.position = new Vector3(SpeedP2.transform.position.x, MapSpeed2.transform.position.y, SpeedP2.transform.position.z);
+        MapRocket.transform.position = new Vector3(RocketP.transform.position.x, MapRocket.transform.position.y, RocketP.transform.position.z);
         if (!HealthP1.GetComponent<Spawner>().PUexists)
             MapHealth1.GetComponent<MeshRenderer>().enabled = false;
         else

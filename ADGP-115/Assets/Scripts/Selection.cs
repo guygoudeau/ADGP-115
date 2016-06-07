@@ -17,6 +17,7 @@ public class Selection : MonoBehaviour {
     public AudioSource select;      //An audiosource used to play an audioclip when a button is pressed.
     public int P1currentColor = 6;  //An integer variable that represents what color player one will be with numbers. It's default is black.
     public int P2currentColor = 6;  //An integer variable that represents what color player two will be with numbers. It's default is black.
+    public GameObject Minimap;  //GameObject used to reference the minimap and gameobject for setting the players and pickup objects for the minimap to use.
     
     void Start()
     {
@@ -268,26 +269,23 @@ public class Selection : MonoBehaviour {
                 Player1.GetComponent<MoveCar>().HUD = ws;
                 Player2.GetComponent<MoveCar>().HUD = ws;
             }
-            if (ws.gameObject.name == "MinimapCamera")
-            {
-                ws.GetComponent<MinimapScript>().Player1 = Player1;
-                ws.GetComponent<MinimapScript>().Player2 = Player2;
-                foreach (var powerups in starts)
-                {
-                    if (powerups.gameObject.name == "Hspawn1")
-                        ws.GetComponent<MinimapScript>().HealthP1 = powerups.gameObject;
-                    else if (powerups.gameObject.name == "Hspawn2")
-                        ws.GetComponent<MinimapScript>().HealthP2 = powerups.gameObject;
-                    else if (powerups.gameObject.name == "Bspawn1")
-                        ws.GetComponent<MinimapScript>().SpeedP1 = powerups.gameObject;
-                    else if (powerups.gameObject.name == "Bspawn2")
-                        ws.GetComponent<MinimapScript>().SpeedP2 = powerups.gameObject;
-                    else if (powerups.gameObject.name == "Rspawn")
-                        ws.GetComponent<MinimapScript>().RocketP = powerups.gameObject;
-                }
-                ws.GetComponent<MinimapScript>().enabled = true;
-            }
         }
+        Minimap.GetComponentInChildren<MinimapScript>().Player1 = Player1;
+        Minimap.GetComponentInChildren<MinimapScript>().Player2 = Player2;
+        foreach (var powerups in starts)
+        {
+            if (powerups.gameObject.name == "Hspawn1")
+                Minimap.GetComponentInChildren<MinimapScript>().HealthP1 = powerups.gameObject;
+            else if (powerups.gameObject.name == "Hspawn2")
+                Minimap.GetComponentInChildren<MinimapScript>().HealthP2 = powerups.gameObject;
+            else if (powerups.gameObject.name == "Bspawn1")
+                Minimap.GetComponentInChildren<MinimapScript>().SpeedP1 = powerups.gameObject;
+            else if (powerups.gameObject.name == "Bspawn2")
+                Minimap.GetComponentInChildren<MinimapScript>().SpeedP2 = powerups.gameObject;
+            else if (powerups.gameObject.name == "Rspawn")
+                Minimap.GetComponentInChildren<MinimapScript>().RocketP = powerups.gameObject;
+        }
+        Minimap.GetComponentInChildren<MinimapScript>().enabled = true;
         this.transform.GetComponentInParent<Transform>().gameObject.SetActive(false);   //The last thing the Finish function does, the Selection Menu's active trait is set to false.
     }
 }
