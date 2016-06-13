@@ -17,6 +17,7 @@ public class Selection : MonoBehaviour {
     public AudioSource select;      //An audiosource used to play an audioclip when a button is pressed.
     public int P1currentColor = 6;  //An integer variable that represents what color player one will be with numbers. It's default is black.
     public int P2currentColor = 6;  //An integer variable that represents what color player two will be with numbers. It's default is black.
+    public GameObject Minimap;  //GameObject used to reference the minimap and gameobject for setting the players and pickup objects for the minimap to use.
     
     void Start()
     {
@@ -179,7 +180,7 @@ public class Selection : MonoBehaviour {
         {
             Player1.GetComponent<Renderer>().material.color = Color.black;
         }
-        
+
         // Creating Player2 
         GameObject Player2 = (GameObject)Instantiate(Player, new Vector3(0, 5, 50), Quaternion.identity); // instantiate another player prefab at certain location
         Player2.GetComponent<MoveCar>().barrel = p2Barrel; // assign player a barrel
@@ -240,24 +241,18 @@ public class Selection : MonoBehaviour {
                 Player2.GetComponent<MoveCar>().healthSlider = hb;
         }
         Component[] texts = transform.GetComponentInParent<Transform>().parent.GetComponentsInChildren<Text>(); //An array is created and populated with all the Text objects in the Canvas.
-        foreach(Text weapon in texts)   //Searches through the array for all Texts.
+        foreach (Text weapon in texts)   //Searches through the array for all Texts.
         {
             if (weapon.name == "P1Weapon")  //When the P1Weapon is found, it sets the Player1's currentWeapon variable in it's MoveCar script to the P1Weapon to have a display on the screen that print's out Player1's weapon.
                 Player1.GetComponent<MoveCar>().currentWeapon = weapon;
             else if (weapon.name == "P2Weapon") //When the P2Weapon is found, it sets the Player2's currentWeapon variable in it's MoveCar script to the P2Weapon to have a display on the screen that print's out Player2's weapon.
                 Player2.GetComponent<MoveCar>().currentWeapon = weapon;
         }
-        Component[] cameras = this.transform.GetComponentsInChildren<Camera>(); //An array is created and populated with Camera objects from the Canvas.
-        foreach(Camera sc in cameras)   //Searches through the array for all Cameras.
-        {
-            if (sc.name == "SelectionCamera")   //When the SelectionCamera is found it is de-activated so it does not conflict with the Players' cameras.
-                sc.gameObject.SetActive(false);
-        }
         Component[] listeners = transform.GetComponentInParent<Transform>().parent.GetComponentsInChildren<AudioListener>();    //An array is created and populated with AudioListener objects from the Canvas.
         foreach (AudioListener al in listeners) //Searches through the array for all AudioListeners.
             if (al.name == "AudioListener") //Finds the AudioListener AudioListener and enables it so AudioSources can be heard.
                 al.enabled = true;
-        foreach(Transform ws in transform.GetComponentInParent<Transform>().parent.GetComponentsInChildren<Transform>())    //Searches through every Transform object in the Canvas.
+        foreach (Transform ws in transform.GetComponentInParent<Transform>().parent.GetComponentsInChildren<Transform>())    //Searches through every Transform object in the Canvas.
         {
             if (ws.gameObject.name == "P1Win")  //When the P1Win gameObject is found it sets Player2's winScreen variable in it's MoveCar script to P1Win and sets the P1Win active trait to false.
             {
@@ -275,7 +270,22 @@ public class Selection : MonoBehaviour {
                 Player2.GetComponent<MoveCar>().HUD = ws;
             }
         }
-
+        Minimap.GetComponentInChildren<MinimapScript>().Player1 = Player1;
+        Minimap.GetComponentInChildren<MinimapScript>().Player2 = Player2;
+        foreach (var powerups in starts)
+        {
+            if (powerups.gameObject.name == "Hspawn1")
+                Minimap.GetComponentInChildren<MinimapScript>().HealthP1 = powerups.gameObject;
+            else if (powerups.gameObject.name == "Hspawn2")
+                Minimap.GetComponentInChildren<MinimapScript>().HealthP2 = powerups.gameObject;
+            else if (powerups.gameObject.name == "Bspawn1")
+                Minimap.GetComponentInChildren<MinimapScript>().SpeedP1 = powerups.gameObject;
+            else if (powerups.gameObject.name == "Bspawn2")
+                Minimap.GetComponentInChildren<MinimapScript>().SpeedP2 = powerups.gameObject;
+            else if (powerups.gameObject.name == "Rspawn")
+                Minimap.GetComponentInChildren<MinimapScript>().RocketP = powerups.gameObject;
+        }
+        Minimap.GetComponentInChildren<MinimapScript>().enabled = true;
         this.transform.GetComponentInParent<Transform>().gameObject.SetActive(false);   //The last thing the Finish function does, the Selection Menu's active trait is set to false.
     }
 }

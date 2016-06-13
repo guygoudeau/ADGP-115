@@ -10,13 +10,12 @@ public class RocketScript : MonoBehaviour {
     void Start () {
         transform.position = Owner.transform.position;  //Sets the RocketB's position to the position of the Owner which during the Start function, the Owner is the GameObject that has spawned the RocketB.
         this.transform.rotation = Owner.transform.rotation; //Sets the RocketB's rotation to the rotation of the Owner.
-        transform.Rotate(90 * Vector3.right);   //Rotates the RocketB 90 degrees right so the up acts as the new forward.
-        transform.Translate(Vector3.up * 20);   //Translates the RocketB 20 units so that is ahead of the Owner and does not collide with the Owner that spawned it right when the RocketB is created.
+        transform.Translate(Vector3.forward * 20);   //Translates the RocketB 20 units so that is ahead of the Owner and does not collide with the Owner that spawned it right when the RocketB is created.
     }
 	
 	// Update is called once per frame
 	void Update () {
-        transform.Translate(Vector3.up * (bulletSpeed * Time.deltaTime));   //Translates the RocketB up by the bulletspeed times deltaTime.
+        transform.Translate(Vector3.forward * (bulletSpeed * Time.deltaTime));   //Translates the RocketB up by the bulletspeed times deltaTime.
         lifespan -= Time.deltaTime; //Decrements the lifespan variable by deltaTime for every Update.
         if (lifespan <= 0)  //Checks to see if the lifespan variable is less than or equal to 0. If so, then the RocketB is destroyed.
             Destroy(this.gameObject);

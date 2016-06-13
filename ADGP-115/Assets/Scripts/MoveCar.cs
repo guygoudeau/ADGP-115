@@ -6,7 +6,7 @@ public class MoveCar : MonoBehaviour
 {
     public float CarSpeed = 1.0f;
     float BaseSpeed = 0.0f;
-    Vector3 position;
+    //Vector3 position;
     public bool HasRocket = false;
     public float Health = 100;
     public int GasTank = 0;
@@ -31,7 +31,7 @@ public class MoveCar : MonoBehaviour
     public Slider healthSlider;
     public Text currentWeapon;
     public Transform winScreen, HUD;
-    private Rigidbody ridgidbody;
+    //private Rigidbody ridgidbody;
 
     public AudioSource powerup;
     public AudioSource takedamage;
@@ -40,9 +40,9 @@ public class MoveCar : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        ridgidbody = GetComponent<Rigidbody>();
+        //ridgidbody = GetComponent<Rigidbody>();
 
-        position = transform.position; //Used to edit the player's location.
+        //position = transform.position; //Used to edit the player's location.
 
         //This edits the string values of Player 1's controls.
         if (gameObject.tag == "P1")
@@ -81,7 +81,7 @@ public class MoveCar : MonoBehaviour
         else if (barrel == 1)
         {
             this.gameObject.transform.GetChild(1).transform.localScale = new Vector3(.3f, .2f, .2f);
-            delaySpan = 3;
+            delaySpan = 2;
             Delay = 0;
             currentBullet = Shotgun;
             currentWeapon.text = " Shotgun";

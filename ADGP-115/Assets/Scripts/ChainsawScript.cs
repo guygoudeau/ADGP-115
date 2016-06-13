@@ -21,10 +21,13 @@ public class ChainsawScript : MonoBehaviour {
 
     void OnTriggerEnter(Collider enemy) //A function that is called when the Owner's barrel enters a rigidbody.
     {
-        if (enemy.GetComponent<MoveCar>())  //If the object the Owner's barrel entered has a MoveCar script, it starts playing the chainsawsound audioclip at four seconds.
+        if (Owner.GetComponent<MoveCar>().barrel == 3)  //Checks to see if the Owner's barrel is a chainsaw.
         {
-            chainsawsound.time = 4.0f;
-            chainsawsound.Play();
+            if (enemy.GetComponent<MoveCar>())  //If the object the Owner's barrel entered has a MoveCar script, it starts playing the chainsawsound audioclip at four seconds.
+            {
+                chainsawsound.time = 4.0f;
+                chainsawsound.Play();
+            }
         }
     }
 
@@ -47,7 +50,10 @@ public class ChainsawScript : MonoBehaviour {
 
     void OnTriggerExit(Collider enemy)  //A function that is called when the Owner's barrel exits the enemy rigidbody.
     {
-        if (enemy.GetComponent<MoveCar>())  //If the enemy object contains the MoveCar script then set the chainsawsound audioclip time to the 9 second mark.
-            chainsawsound.time = 9.0f;
+        if (Owner.GetComponent<MoveCar>().barrel == 3)  //Checks to see if the Owner's barrel is a chainsaw.
+        {
+            if (enemy.GetComponent<MoveCar>())  //If the enemy object contains the MoveCar script then set the chainsawsound audioclip time to the 9 second mark.
+                chainsawsound.time = 9.0f;
+        }
     }
 }
