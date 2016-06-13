@@ -17,43 +17,54 @@ public class ChainsawScript : MonoBehaviour {
                 chainsawsound.Stop();
             }
         }
+        if (Time.timeScale == 0)
+            chainsawsound.Stop();
 	}
 
     void OnTriggerEnter(Collider enemy) //A function that is called when the Owner's barrel enters a rigidbody.
     {
-        if (Owner.GetComponent<MoveCar>().barrel == 3)  //Checks to see if the Owner's barrel is a chainsaw.
+        if (Time.timeScale != 0)
         {
-            if (enemy.GetComponent<MoveCar>())  //If the object the Owner's barrel entered has a MoveCar script, it starts playing the chainsawsound audioclip at four seconds.
+            if (Owner.GetComponent<MoveCar>().barrel == 3)  //Checks to see if the Owner's barrel is a chainsaw.
             {
-                chainsawsound.time = 4.0f;
-                chainsawsound.Play();
+                if (enemy.GetComponent<MoveCar>())  //If the object the Owner's barrel entered has a MoveCar script, it starts playing the chainsawsound audioclip at four seconds.
+                {
+                    chainsawsound.time = 4.0f;
+                    chainsawsound.Play();
+                }
             }
         }
     }
 
     void OnTriggerStay(Collider enemy)  //A function that is called when the Owner's barrel of the Owner stays in a rigidbody.
     {
-        if (Owner.GetComponent<MoveCar>().Health > 0)   //Checks if the Owner's health is greater than zero. If not it will skip the code within the statement's brackets.
+        if (Time.timeScale != 0)
         {
-            if (Owner.GetComponent<MoveCar>().barrel == 3)  //Checks to see if the Owner's barrel is a chainsaw.
+            if (Owner.GetComponent<MoveCar>().Health > 0)   //Checks if the Owner's health is greater than zero. If not it will skip the code within the statement's brackets.
             {
-                if (enemy.gameObject != Owner)  //Checks to see if the rigidbody that the Owner's barrel is in is not the Owner.
-                    if (enemy.gameObject.GetComponent<MoveCar>())   //Checks to see if the enemy object has the MoveCar script, indicating if it is a player or not.
-                    {
-                        if (chainsawsound.time >= 9.0f) //Checks to see if the timd of the audioclip is 9 seconds or more. If so, it sets the time of the audioclip to the 6 second mark.
-                            chainsawsound.time = 6.0f;
-                        enemy.GetComponent<MoveCar>().Health -= .5f;    //Decrements the Health variable of the enemy object by .5
-                    }
+                if (Owner.GetComponent<MoveCar>().barrel == 3)  //Checks to see if the Owner's barrel is a chainsaw.
+                {
+                    if (enemy.gameObject != Owner)  //Checks to see if the rigidbody that the Owner's barrel is in is not the Owner.
+                        if (enemy.gameObject.GetComponent<MoveCar>())   //Checks to see if the enemy object has the MoveCar script, indicating if it is a player or not.
+                        {
+                            if (chainsawsound.time >= 9.0f) //Checks to see if the timd of the audioclip is 9 seconds or more. If so, it sets the time of the audioclip to the 6 second mark.
+                                chainsawsound.time = 6.0f;
+                            enemy.GetComponent<MoveCar>().Health -= .5f;    //Decrements the Health variable of the enemy object by .5
+                        }
+                }
             }
         }
     }
 
     void OnTriggerExit(Collider enemy)  //A function that is called when the Owner's barrel exits the enemy rigidbody.
     {
-        if (Owner.GetComponent<MoveCar>().barrel == 3)  //Checks to see if the Owner's barrel is a chainsaw.
+        if (Time.timeScale != 0)
         {
-            if (enemy.GetComponent<MoveCar>())  //If the enemy object contains the MoveCar script then set the chainsawsound audioclip time to the 9 second mark.
-                chainsawsound.time = 9.0f;
+            if (Owner.GetComponent<MoveCar>().barrel == 3)  //Checks to see if the Owner's barrel is a chainsaw.
+            {
+                if (enemy.GetComponent<MoveCar>())  //If the enemy object contains the MoveCar script then set the chainsawsound audioclip time to the 9 second mark.
+                    chainsawsound.time = 9.0f;
+            }
         }
     }
 }
