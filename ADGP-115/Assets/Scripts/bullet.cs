@@ -17,7 +17,7 @@ public class bullet : MonoBehaviour {
         if (Bullet.name == "ShotgunB(Clone)")   //If the Bullet is an instantiated version of a ShotgunB prefab, then it's lifespan is set to 1 second and it's personal speed is 1.7.
         {
             lifespan = 1f;
-            bulletSpeed = 1.7f;
+            bulletSpeed = 3.7f;
         }
         if (Bullet.name == "MachineGunB(Clone)")    //If the Bullet is an instantiated version of a MachineGunB prefab, then it's lifespan is set to 2.5 seconds and it's personal speed is 1.7.
         {
@@ -47,7 +47,7 @@ public class bullet : MonoBehaviour {
                 if (Bullet.name == "SniperB(Clone)")    //If the Bullet is a clone of the SniperB prefab, it decrements the Owner's Health variable by 30.
                     Owner.GetComponent<MoveCar>().Health -= 30;
                 else if (Bullet.name == "ShotgunB(Clone)")  //If the Bullet is a clone of the ShotgunB prefab, it decrements the Owner's Health variable by 10.
-                    Owner.GetComponent<MoveCar>().Health -= 10;
+                    Owner.GetComponent<MoveCar>().Health -= 12;
                 else if (Bullet.name == "MachineGunB(Clone)")   //If the Bullet is a clone of the MachineGunB prefab, it decrements the Owner's Health variable by 2.
                     Owner.GetComponent<MoveCar>().Health -= 2;
             }

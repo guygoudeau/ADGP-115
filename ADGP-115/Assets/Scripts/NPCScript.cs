@@ -62,14 +62,14 @@ public class NPCScript : MonoBehaviour {
         if (((60 > Vector3.Distance(SpeedP1.transform.position, transform.position)) && (lowestDist > 40)) && (Destination == null))
         {
             lowestDist = Vector3.Distance(SpeedP1.transform.position, transform.position);
-            closestPiUP = SpeedP1.tranform.position;
+            closestPiUP = SpeedP1.gameObject.transform.position;
             PiUP_Priority = true;
             chosenPiUP = SpeedP1;
         }
         if (((60 > Vector3.Distance(SpeedP2.transform.position, transform.position)) && (lowestDist > 40)) && (Destination == null))
         {
             lowestDist = Vector3.Distance(SpeedP2.transform.position, transform.position);
-            closestPiUP = SpeedP2.tranform.position;
+            closestPiUP = SpeedP2.gameObject.transform.position;
             PiUP_Priority = true;
             chosenPiUP = SpeedP2;
         }
