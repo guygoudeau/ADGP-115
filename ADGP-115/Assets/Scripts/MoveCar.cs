@@ -31,16 +31,18 @@ public class MoveCar : MonoBehaviour
     public Slider healthSlider;
     public Text currentWeapon;
     public Transform winScreen, HUD;
-    //private Rigidbody ridgidbody;
+    private Rigidbody ridgidbody;
 
     public AudioSource powerup;
     public AudioSource takedamage;
     public AudioSource rocket;
 
+    public GameObject Pausing;
+
     // Use this for initialization
     void Start()
     {
-        //ridgidbody = GetComponent<Rigidbody>();
+        ridgidbody = GetComponent<Rigidbody>();
 
         //position = transform.position; //Used to edit the player's location.
 
@@ -112,7 +114,6 @@ public class MoveCar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (alive) //Checks to see if the player is alive.
         {
             if (HasRocket == true && Input.GetButtonDown(Special)) // Removes the rocket from the inventory and creates the rocket at barrel location
@@ -146,7 +147,9 @@ public class MoveCar : MonoBehaviour
                 BoostCurrent = false;
 
             }
-
+            if (transform.position.y > 5.5f)
+                transform.position += transform.up * -10 * Time.deltaTime;
+            ridgidbody.velocity = new Vector3(0, 0, 0);
             transform.position += transform.forward * CarSpeed * Input.GetAxis(movementAxisVertical) * Time.deltaTime;
             transform.position += transform.right * CarSpeed * Input.GetAxis(movementAxisHorizontal) * Time.deltaTime;
 
