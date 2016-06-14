@@ -3144,7 +3144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dab7cbf8673cfe340a0b8be697aebd2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 186456, guid: cb0731ff544f90e4fa426e06081fbfe8, type: 2}
+  Player: {fileID: 192514, guid: 1853236d6485fde499b44bc4c2ee01f6, type: 2}
   p1Barrel: 2
   p2Barrel: 2
   GrassArena: {fileID: 124764, guid: e8abf38045cc7684e8535c45dfb24d39, type: 2}
