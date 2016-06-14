@@ -8,7 +8,6 @@ public class RocketScript : MonoBehaviour {
     public GameObject Owner;    //A GameObject variable that allows for a publisher and subscriber relationship between the RocketB and Players.
     // Use this for initialization
     void Start () {
-        transform.position = Owner.transform.position;  //Sets the RocketB's position to the position of the Owner which during the Start function, the Owner is the GameObject that has spawned the RocketB.
         this.transform.rotation = Owner.transform.rotation; //Sets the RocketB's rotation to the rotation of the Owner.
         transform.Translate(Vector3.forward * 20);   //Translates the RocketB 20 units so that is ahead of the Owner and does not collide with the Owner that spawned it right when the RocketB is created.
     }
