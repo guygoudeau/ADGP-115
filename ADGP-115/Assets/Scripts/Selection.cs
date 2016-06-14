@@ -158,26 +158,38 @@ public class Selection : MonoBehaviour {
         Player1.name = "Player 1"; // set player 1's name
         if (P1currentColor == 1) // depending on what color was chosen...
         {
+            foreach (Renderer piece in Player1.GetComponentsInChildren<Renderer>())
+                piece.material.color = Color.blue;
             Player1.GetComponent<Renderer>().material.color = Color.blue; // ...use these to change color of material
         }
         if (P1currentColor == 2)
         {
+            foreach (Renderer piece in Player1.GetComponentsInChildren<Renderer>())
+                piece.material.color = Color.red;
             Player1.GetComponent<Renderer>().material.color = Color.red;
         }
         if (P1currentColor == 3)
         {
+            foreach (Renderer piece in Player1.GetComponentsInChildren<Renderer>())
+                piece.material.color = Color.green;
             Player1.GetComponent<Renderer>().material.color = Color.green;
         }
         if (P1currentColor == 4)
         {
+            foreach (Renderer piece in Player1.GetComponentsInChildren<Renderer>())
+                piece.material.color = Color.yellow;
             Player1.GetComponent<Renderer>().material.color = Color.yellow;
         }
         if (P1currentColor == 5)
         {
+            foreach (Renderer piece in Player1.GetComponentsInChildren<Renderer>())
+                piece.material.color = Color.white;
             Player1.GetComponent<Renderer>().material.color = Color.white;
         }
         if (P1currentColor == 6)
         {
+            foreach (Renderer piece in Player1.GetComponentsInChildren<Renderer>())
+                piece.material.color = Color.black;
             Player1.GetComponent<Renderer>().material.color = Color.black;
         }
 
@@ -188,26 +200,38 @@ public class Selection : MonoBehaviour {
         Player2.name = "Player 2"; // set player 2's name
         if (P2currentColor == 1) // depending on what color was chosen...
         {
+            foreach (Renderer piece in Player2.GetComponentsInChildren<Renderer>())
+                piece.material.color = Color.blue;
             Player2.GetComponent<Renderer>().material.color = Color.blue; // ...use these to change color of material
         }
         if (P2currentColor == 2)
         {
+            foreach (Renderer piece in Player2.GetComponentsInChildren<Renderer>())
+                piece.material.color = Color.red;
             Player2.GetComponent<Renderer>().material.color = Color.red;
         }
         if (P2currentColor == 3)
         {
+            foreach (Renderer piece in Player2.GetComponentsInChildren<Renderer>())
+                piece.material.color = Color.green;
             Player2.GetComponent<Renderer>().material.color = Color.green;
         }
         if (P2currentColor == 4)
         {
+            foreach (Renderer piece in Player2.GetComponentsInChildren<Renderer>())
+                piece.material.color = Color.yellow;
             Player2.GetComponent<Renderer>().material.color = Color.yellow;
         }
         if (P2currentColor == 5)
         {
+            foreach (Renderer piece in Player2.GetComponentsInChildren<Renderer>())
+                piece.material.color = Color.white;
             Player2.GetComponent<Renderer>().material.color = Color.white;
         }
         if (P2currentColor == 6)
         {
+            foreach (Renderer piece in Player2.GetComponentsInChildren<Renderer>())
+                piece.material.color = Color.black;
             Player2.GetComponent<Renderer>().material.color = Color.black;
         }
         Player2.GetComponentInChildren<Camera>().rect = new Rect(.5f, 0, .5f, 1);
@@ -270,9 +294,9 @@ public class Selection : MonoBehaviour {
                 Player2.GetComponent<MoveCar>().HUD = ws;
             }
         }
-        Minimap.GetComponentInChildren<MinimapScript>().Player1 = Player1;
-        Minimap.GetComponentInChildren<MinimapScript>().Player2 = Player2;
-        foreach (var powerups in starts)
+        Minimap.GetComponentInChildren<MinimapScript>().Player1 = Player1;  //Sets the MinimapScript's Player1 to the instantiated Player1 GameObject.
+        Minimap.GetComponentInChildren<MinimapScript>().Player2 = Player2;  //Sets the MinimapScript's Player2 to the instantiated Player2 GameObject.
+        foreach (var powerups in starts)    //Searches all the variables in the Arena Transform Array and sets the MinimapScript's powerup references to the actual powerup spawn objects.
         {
             if (powerups.gameObject.name == "Hspawn1")
                 Minimap.GetComponentInChildren<MinimapScript>().HealthP1 = powerups.gameObject;
@@ -285,7 +309,7 @@ public class Selection : MonoBehaviour {
             else if (powerups.gameObject.name == "Rspawn")
                 Minimap.GetComponentInChildren<MinimapScript>().RocketP = powerups.gameObject;
         }
-        Minimap.GetComponentInChildren<MinimapScript>().enabled = true;
+        Minimap.GetComponentInChildren<MinimapScript>().enabled = true; //Starts the MinimapScript
         this.transform.GetComponentInParent<Transform>().gameObject.SetActive(false);   //The last thing the Finish function does, the Selection Menu's active trait is set to false.
     }
 }

@@ -38,6 +38,7 @@ public class MoveCar : MonoBehaviour
     public AudioSource rocket;
 
     public GameObject Pausing;
+    Component[] transforms;
 
     // Use this for initialization
     void Start()
@@ -71,7 +72,13 @@ public class MoveCar : MonoBehaviour
         //and gives the player's gun the Sniper functionality.
         if (barrel == 0)
         {
-            this.gameObject.transform.GetChild(1).transform.localScale = new Vector3(.1f, .2f, .1f);
+            foreach (Transform Barrel in gameObject.GetComponentsInChildren<Transform>())
+                if (Barrel.gameObject.name == "barrel")
+                {
+                    Barrel.gameObject.GetComponent<ChainsawScript>().Owner = this.gameObject;
+                    Barrel.localPosition = new Vector3(0, -.1f, -.6f);
+                    Barrel.localScale = new Vector3(1f, 1f, 2f);
+                }
             delaySpan = 5;
             Delay = 0;
             currentBullet = Sniper;
@@ -82,7 +89,13 @@ public class MoveCar : MonoBehaviour
         //and gives the player's gun the Shotgun functionality.
         else if (barrel == 1)
         {
-            this.gameObject.transform.GetChild(1).transform.localScale = new Vector3(.3f, .2f, .2f);
+            foreach (Transform Barrel in gameObject.GetComponentsInChildren<Transform>())
+                if (Barrel.gameObject.name == "barrel")
+                {
+                    Barrel.gameObject.GetComponent<ChainsawScript>().Owner = this.gameObject;
+                    Barrel.localPosition = new Vector3(0, -.1f, 0);
+                    Barrel.localScale = new Vector3(3f, 1f, 1f);
+                }
             delaySpan = 2;
             Delay = 0;
             currentBullet = Shotgun;
@@ -93,22 +106,34 @@ public class MoveCar : MonoBehaviour
         //and gives the player's gun the Machine Gun functionality.
         else if (barrel == 2)
         {
-            this.gameObject.transform.GetChild(1).transform.localScale = new Vector3(.2f, .2f, .2f);
+            foreach (Transform Barrel in gameObject.GetComponentsInChildren<Transform>())
+                if (Barrel.gameObject.name == "barrel")
+                {
+                    Barrel.gameObject.GetComponent<ChainsawScript>().Owner = this.gameObject;
+                    Barrel.localPosition = new Vector3(0, -.1f, .15f);
+                    Barrel.localScale = new Vector3(1f, 1f, .8f);
+                }
             delaySpan = .1f;
             Delay = 0;
             currentBullet = MachineGun;
-            currentWeapon.text = " Machine Gun";
+            //currentWeapon.text = " Machine Gun";
             BaseSpeed = 60.0f;
         }
         //This conditional checks if the player's barrel is a chainsaw,
         //and gives the player's barrel, chainsaw functionality.
         else if (barrel == 3)
         {
-            this.gameObject.transform.GetChild(1).transform.localScale = new Vector3(.2f, .4f, .01f);
-            this.gameObject.GetComponentInChildren<ChainsawScript>().Owner = this.gameObject;
+            foreach (Transform Barrel in gameObject.GetComponentsInChildren<Transform>())
+                if (Barrel.gameObject.name == "barrel")
+                {
+                    Barrel.gameObject.GetComponent<ChainsawScript>().Owner = this.gameObject;
+                    Barrel.localPosition = new Vector3(0, 2f, -1);
+                    Barrel.localScale = new Vector3(1f, .1f, 2.5f);
+                }
             currentWeapon.text = " Chainsaw";
             BaseSpeed = 70.0f;
         }
+        transforms = transform.gameObject.GetComponentsInChildren<Transform>();
     }
 
     // Update is called once per frame
@@ -118,7 +143,7 @@ public class MoveCar : MonoBehaviour
         {
             if (HasRocket == true && Input.GetButtonDown(Special)) // Removes the rocket from the inventory and creates the rocket at barrel location
             {
-                GameObject rocket = (GameObject)Instantiate(Rocket, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                GameObject rocket = (GameObject)Instantiate(Rocket, new Vector3(transform.position.x, transform.position.y + 6.5f, transform.position.z), Quaternion.identity);
                 rocket.GetComponent<RocketScript>().Owner = this.gameObject;
                 HasRocket = false;
             }
@@ -147,8 +172,17 @@ public class MoveCar : MonoBehaviour
                 BoostCurrent = false;
 
             }
-            if (transform.position.y > 5.5f)
+            //foreach (var piece in transforms)
+            //{
+            //    //Debug.Log(piece.gameObject.name);
+            //    if (piece.gameObject.name == "tank_model")
+            //        piece.transform.localPosition = new Vector3(piece.transform.localPosition.x, 0.5f, piece.transform.localPosition.z);
+            //}
+            //Debug.Log(transform.position.y);
+            if (transform.position.y > 0.5f)
                 transform.position += transform.up * -10 * Time.deltaTime;
+            //if (transform.position.y < 0.5f)
+            //    transform.position += transform.up * 10 * Time.deltaTime;
             ridgidbody.velocity = new Vector3(0, 0, 0);
             transform.position += transform.forward * CarSpeed * Input.GetAxis(movementAxisVertical) * Time.deltaTime;
             transform.position += transform.right * CarSpeed * Input.GetAxis(movementAxisHorizontal) * Time.deltaTime;
@@ -165,16 +199,16 @@ public class MoveCar : MonoBehaviour
             //Conditional for firing the Player's gun depending of the type of gun and its bullets and delay.
             if ((shooting && (Delay <= 0)) && (barrel != 3))
             {
-                GameObject Bullet = (GameObject)Instantiate(currentBullet, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                GameObject Bullet = (GameObject)Instantiate(currentBullet, new Vector3(transform.position.x, transform.position.y + 6.5f, transform.position.z), Quaternion.identity);
                 Bullet.GetComponent<bullet>().Owner = this.gameObject;
                 //Special bullet creation for shotgun.
                 if (barrel == 1)
                 {
                     for (int i = 1; i < 3; i++)
                     {
-                        GameObject exPosBullet = (GameObject)Instantiate(currentBullet, new Vector3(transform.position.x, transform.position.y, transform.position.z) + (transform.right * (5 * i)), Quaternion.identity);
+                        GameObject exPosBullet = (GameObject)Instantiate(currentBullet, new Vector3(transform.position.x, transform.position.y + 6.5f, transform.position.z) + (transform.right * (5 * i)), Quaternion.identity);
                         exPosBullet.GetComponent<bullet>().Owner = this.gameObject;
-                        GameObject exNegBullet = (GameObject)Instantiate(currentBullet, new Vector3(transform.position.x, transform.position.y, transform.position.z) - (transform.right * (5 * i)), Quaternion.identity);
+                        GameObject exNegBullet = (GameObject)Instantiate(currentBullet, new Vector3(transform.position.x, transform.position.y + 6.5f, transform.position.z) - (transform.right * (5 * i)), Quaternion.identity);
                         exNegBullet.GetComponent<bullet>().Owner = this.gameObject;
                     }
                 }

@@ -16,7 +16,7 @@ public class bullet : MonoBehaviour {
         }
         if (Bullet.name == "ShotgunB(Clone)")   //If the Bullet is an instantiated version of a ShotgunB prefab, then it's lifespan is set to 1 second and it's personal speed is 1.7.
         {
-            lifespan = 1f;
+            lifespan = .5f;
             bulletSpeed = 3.7f;
         }
         if (Bullet.name == "MachineGunB(Clone)")    //If the Bullet is an instantiated version of a MachineGunB prefab, then it's lifespan is set to 2.5 seconds and it's personal speed is 1.7.
